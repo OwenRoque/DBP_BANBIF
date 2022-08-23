@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.header{
+    width: 100%;
+	height: 70px;
+    position: fixed;
+    top: 0;left: 0;
+    background-color: #20a6ff;
+}
+
+/*Estilos para el encabezado*/
+
+.container{
+	margin-left: 30px;
+}
+.container .btn-menu, .logo{
+	float: left;
+	line-height: 70px;
+}
+.container .btn-menu label{
+	color: #fff;
+	font-size: 25px;
+	cursor: pointer;
+}
+.logo h1{
+	margin-top: 0;
+	color: #fff;
+	font-weight: bold	;
+	font-size: 28px;
+	margin-left: 30px;			/*sdfaaaaaaaaaaaaaa*/
+	
+}
+.container .menu{
+	float: right;
+	line-height: 70px;
+	
+}
+.container .menu a{
+	
+	display: inline-block;
+	padding: 10px;
+	line-height: normal;
+	text-decoration: none;
+	color: #fff;
+	transition: 0.1s;
+	border-bottom: 2px solid transparent;
+	font-size: 15px;
+	margin-right: 5px;
+}
+.container .menu a:hover{
+	background-color: rgba(0, 0, 0, 0.777);
+	border-radius: 3px;	
+}
+/*Fin de Estilos para el encabezado*/
+
+/*Menù lateral*/
+#btn-menu{
+	display: none;
+	margin-top: 20px;
+	
+}
+.container-menu{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;left: 0;
+	transition: all 500ms ease;
+	opacity: 0;
+	visibility: hidden;
+}
+#btn-menu:checked ~ .container-menu{
+	opacity: 1;
+	visibility: visible;
+}
+
+/*RECUADRO SIRVE*/
+.cont-menu{
+	width: 100%;
+	max-width: 250px;
+	background: #1c1c1c;
+	height: 100vh;
+	margin-top: 70px;
+	position: fixed;
+	transition: all 500ms ease;
+	/* transform: translateX(-100%); */
+	visibility: hidden;
+}
+#btn-menu:checked ~ .container-menu .cont-menu{
+	transform: translateX(0%);
+	visibility: visible;
+}
+.cont-menu nav{
+	transform: translateY(15%);
+}
+.cont-menu nav a{
+	display: block;
+	text-decoration: none;
+	padding: 20px;
+	color: #c7c7c7;
+	border-left: 5px solid transparent;
+	transition: all 400ms ease;
+}
+.cont-menu nav a:hover{
+	border-left: 5px solid #c7c7c7;
+	background: #1f1f1f;
+}
+.cont-menu label{
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+}
+/*Fin de Menù lateral*/
+
+
+/*Menu lateral fijo*/
+.body-container{
+	background-color: #ba1d1d;
+	padding: 0px;
+	height: 100%;
+	display: flex;
+	color: #1c1c1c;
+}
+
+.container-left{
+	margin-top:70px ;
+	background-color:#20a6ff;
+	position: fixed;
+	width: 90px;
+	height: 100%;
+	color: white;
+}
+.container-left nav ul{
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	max-width: 100%;
+}
+.container-left nav ul li{
+	text-decoration: none;
+	margin-top: 30px;
+	padding-bottom: 10px;
+	width: 100%;	
+	justify-items: center;
+	text-align: center;
+}
+.container-left nav ul li a{
+	text-decoration: none;
+	color: white;
+	text-align: right;
+	max-width: 100%;
+}
+
+img{
+	filter:  brightness(0) invert(1);
+}
+.logoo{
+	filter: none;
+}
+
+.contenido-text{
+	margin-top: 70px;
+	margin-left: 100px;
+}
+
+
+
+
+
+
+/*
+CONTENDIO CSS
+
+*/
+:root{
+	
+	--main-div-text: 'Lucida Sans';
+	--main-container-bg: rgb(247, 242, 242);
+	--main-container-title-bg: rgba(228, 224, 224, 0.528);
+	--main-tittle-h-color: #20a6ff;
+	--main-border-button-color: 1px solid grey;
+	--margin-blocks-divs: 0 20px;
+}
+
+.titulo{
+	margin-left: 8px;
+	padding: 15px 20px 0px 20px;
+	font-size: 11px;
+	font-weight: bold;
+}
+.container-divs{
+	display: flex;
+	justify-content: space-evenly;
+}
+.datos-col1{
+	
+	width: calc(100% - 60px);
+	margin: 8px;
+	background-color: var(--main-container-bg);
+	
+
+	height: 540px;
+	/* height: fit-content;  */
+	font-size: 18px;
+	
+}
+.blocks-container{
+	overflow-y: scroll;
+	height: 500px;
+	width: 100%;
+}
+.datos-col1 .block-fixed{
+	position: sticky; 
+    top: 0px;
+    background-color: var(--main-container-title-bg);
+    color: rgb(66, 62, 62);
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+	padding: 10px;
+    
+    
+}
+.block{
+	margin: 0 20px;
+	height: fit-content;
+	padding: 20px;
+	border-bottom: var(--main-border-button-color);
+}
+
+
+.block h3 {
+	font-size: 14px;
+	
+}
+.block h4 {
+	font-size: 18px;
+	padding-bottom: 10px;
+	
+}
+.block h2 {
+	color: var(--main-tittle-h-color);
+	font-size: 20px;
+	padding-bottom: 20px;
+}
+.telefonos{
+	margin: var(--margin-blocks-divs);
+}
+
+
+.residencia{
+	margin-top: 20px;
+	margin: var(--margin-blocks-divs);
+}
+.residencia-data label{
+	margin: 10px;
+	padding: 10px 0;
+	/* background-color: #133b5c; */
+}
+
+
+.etiquetatittle{
+    padding: 5px 0;
+}
+.valor-tel{
+    padding: 5px 20px;
+}
+label{
+    display: flex;
+}
+label .etiqueta{
+    width: calc(100%/2);
+   
+}
+label .valor input{
+    width: 200px;
+    padding: 5px;
+}
+label .valor select{
+    display: block;
+    width: 200px;
+    padding: 5px;
+    border-left: 5px solid var(--main-tittle-h-color);
+}
+.title-confipersonal{
+    float: right;
+    text-decoration: none;
+}
+
+
+.buttons-container{
+    background-color: white;
+    padding: 10px;
+    text-align: right;
+}
+
+input[type ="submit"]{
+    background-color: white;
+    color:  var(--main-tittle-h-color);
+    padding:10px;
+    width: 150px;
+    border-collapse: collapse;
+    border-color:  var(--main-tittle-h-color);
+    font-size: 16px;
+    
+    font-weight: bold;
+    
+}
+input[type ="submit"]:hover{
+    background-color: var(--main-tittle-h-color);
+    color: white;
+}
+.EditarDatosPersonales{
+    height: 620px;
+    width: 50%;
+    margin: auto;
+    border: none;
+   
+}
+.FormularioPersonal .block-fixed{
+    position: sticky; 
+    top: 0px;
+    background-color: var(--main-container-title-bg);
+    color: rgb(66, 62, 62);
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+}
+.FormularioPersonal .blocks-container .block h4{
+    color: black;
+}
+.datos-col1 .blocks-container .block h4{
+    color: black;
+}
+
+.datos-col2{
+	height: 540px;
+	width: calc(100% - 60px);
+	margin: 8px;
+	background-color: white;
+}
+
+.datos-row1{
+	height: calc(65% );
+	background-color: var(--main-container-bg);
+	margin-bottom: 5px;
+}
+
+.datos-row1 .block-fixed-row1{
+	position: sticky; 
+    top: 0px;
+    background-color: var(--main-container-title-bg);
+    color: rgb(66, 62, 62);
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+	padding: 10px;
+}
+
+.datos-row2{
+	height: calc(35%);
+	background-color: var(--main-container-bg);
+}
+
+.datos-row2 .block-fixed-row2{
+	position: sticky; 
+    top: 0px;
+    background-color: var(--main-container-title-bg);
+    color: rgb(66, 62, 62);
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+	padding: 10px;
+}
+.row-content{
+	overflow-y: scroll;
+	height: 140px;
+	width: 100%;
+}
+.row-content-divs{
+	border-bottom: var(--main-border-button-color);
+	padding: 15px;
+}
+
+.seguridad{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.seguridad div a{
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+
+
+
+
+
+
+
+
+
+/*
+vebta desplegable
+
+*/
+
+
+/*Cambiar contra*/
+.cambio_contra{
+    margin:auto;
+    background: blue;
+    border: none;
+    width:45%;
+}
+.Cabezera{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.Cabezera div{
+    line-height: 100%;
+    padding: 10px;
+}
+.Cabezera h4{   
+        color: white;
+}
+.formulario{
+    background: white;
+    padding: 10px;
+}
+.modificacion{
+    display: flex;
+}
+.modificacion h5{
+    font-size: 15px;
+    padding: 10px 20px;
+    text-align: right;
+    width: 40%;
+}
+.modificacion p{
+    font-size: 15px;
+    padding: 10px 20px;
+    text-align: left;
+}
+.modificacion input{
+    font-size: 10px;
+    padding: 10px 20px;
+    align-items: left;
+    width: 30%;
+    height: 5%;
+    
+}
+.modificacion_1{
+    margin-left: 40%;
+    text-align: left;
+    font-size: 11px;
+    padding: 10px 0px 30px 0px;
+}
+
+/*Estilos para  tipo de cambio*/
+
+.contenido-cambio{
+    margin: 25% 75% 0px 100px;
+    background: #2F99EF;
+    border-radius:10px 10px 10px 10px;
+    border: none;
+    width:25%;
+}
+.opciones{
+    display: flex;
+    background: white;
+    padding: 10px 10px;
+}
+.Venta{
+    text-align:  right;
+    padding: 5px 10px;
+    margin-left: 10px;
+    color:black;
+    width: 50%; 
+}
+.compra{
+    float: left;
+    width: 50%;
+    margin-right: 10px;
+    color:black;
+    padding: 5px 10px; 
+}
+.Monedas_Cambio{
+    background: #E7F9F9;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.Monedas_Cambio opciones{
+    float: right;
+    background: #20a6ff;
+}

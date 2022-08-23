@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.header{
+    width: 100%;
+	height: 70px;
+    position: fixed;
+    top: 0;left: 0;
+    background-color: #20a6ff;
+}
+
+/*Estilos para el encabezado*/
+
+.container{
+	margin-left: 30px;
+}
+.container .btn-menu, .logo{
+	float: left;
+	line-height: 70px;
+}
+.container .btn-menu label{
+	color: #fff;
+	font-size: 25px;
+	cursor: pointer;
+}
+.logo h1{
+	margin-top: 0;
+	color: #fff;
+	font-weight: bold	;
+	font-size: 28px;
+	margin-left: 30px;			/*sdfaaaaaaaaaaaaaa*/
+	
+}
+.container .menu{
+	float: right;
+	line-height: 70px;
+	
+}
+.container .menu a{
+	
+	display: inline-block;
+	padding: 10px;
+	line-height: normal;
+	text-decoration: none;
+	color: #fff;
+	transition: 0.1s;
+	border-bottom: 2px solid transparent;
+	font-size: 15px;
+	margin-right: 5px;
+}
+.container .menu a:hover{
+	background-color: rgba(0, 0, 0, 0.777);
+	border-radius: 3px;	
+}
+/*Fin de Estilos para el encabezado*/
+
+/*Menù lateral*/
+#btn-menu{
+	display: none;
+	margin-top: 20px;
+	
+}
+.container-menu{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;left: 0;
+	transition: all 500ms ease;
+	opacity: 0;
+	visibility: hidden;
+}
+#btn-menu:checked ~ .container-menu{
+	opacity: 1;
+	visibility: visible;
+}
+
+/*RECUADRO SIRVE*/
+.cont-menu{
+	width: 100%;
+	max-width: 250px;
+	background: #1c1c1c;
+	height: 100vh;
+	margin-top: 70px;
+	position: fixed;
+	transition: all 500ms ease;
+	transform: translateX(-100%);
+}
+#btn-menu:checked ~ .container-menu .cont-menu{
+	transform: translateX(0%);
+}
+.cont-menu nav{
+	transform: translateY(15%);
+}
+.cont-menu nav a{
+	display: block;
+	text-decoration: none;
+	padding: 20px;
+	color: #c7c7c7;
+	border-left: 5px solid transparent;
+	transition: all 400ms ease;
+}
+.cont-menu nav a:hover{
+	border-left: 5px solid #c7c7c7;
+	background: #1f1f1f;
+}
+.cont-menu label{
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+}
+/*Fin de Menù lateral*/
+
+ul{
+    
+    list-style: none;
+}
+/*Menu lateral fijo*/
+.body-container{
+	background-color: #ba1d1d;
+	padding: 0px;
+	height: 100%;
+	display: flex;
+	color: #1c1c1c;
+}
+
+.container-left{
+	margin-top:70px ;
+	background-color:#20a6ff;
+	position: fixed;
+	width: 90px;
+	height: 100%;
+	color: white;
+}
+.container-left nav ul{
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	max-width: 100%;
+}
+.container-left nav ul li{
+	text-decoration: none;
+	margin-top: 30px;
+	padding-bottom: 10px;
+	width: 100%;	
+	justify-items: center;
+	text-align: center;
+}
+.container-left nav ul li a{
+	text-decoration: none;
+	color: white;
+	text-align: right;
+	max-width: 100%;
+}
+.menu_pagar img{
+    filter:none;
+    width: 12px;
+    height: 12px;
+    margin: 0px 5px 0px -15px;
+
+}
+img{
+	filter:  brightness(0) invert(1);
+}
+
+img1{
+    	filter:  brightness(0) invert(1);
+
+}
+.logoo{
+	filter: none;
+}
+
+.contenido-text{
+    overflow: no-display;
+	margin-top: 70px;
+	margin-left: 100px;
+        margin-right: 10px;
+}   
+
+.formulario_tarjetas{
+    display: block;
+    margin-top: 20px;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.obligatorio{
+    display: flex;
+    justify-content: space-between;
+}
+.mis_targetas_bambif{
+    padding: 10px;
+    display: block;
+    background-color:#DEDEDE;
+
+}
+.select_targetas{
+    background: transparent;
+    border:none;
+}
+.partes{
+    display: block;
+    flex: 1 1 50%;
+    margin: 0px 50px;
+}
+
+.monto{
+    margin-top: 120px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    justify-content: center;
+}
+.monto input{
+    border:none;
+}
+.monto{
+    margin-top: 110px;
+}
+
+.hr1{
+    margin: 10px 565px 20px 510px;
+}
+
+.datos_adicionales{
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+.datos_adicionales div{
+    margin: 20px 70px 0px 0px;
+}
+
+.descripcion input{
+    padding: 10px;
+    margin-top: 10px;
+}
+.correo{
+    margin-top: 15px;
+}
+.menu_pagar{
+    margin:21% 6%;
+    border: 1px solid white;
+    font-size: 13px;
+    padding: 3px 50px 3px 30px; 
+}
+
+.menu_pagar li{
+    margin: 5px;
+}
+.menu_pagar li a{
+    color:black;
+    text-decoration: none;
+}
+
+
+.programar{
+    margin-top: 30px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: -3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 100%;
+}
+
+h5 select{
+    border:none;
+    margin: 15px;
+}
+
+.botones_final{
+    display: flex;
+    justify-content: end;
+    padding: 5px;
+    background: #DEDEDE;
+}
+.botones_final button{
+    padding: 5px;
+    margin: 0px 5px;
+    width: 150px;
+}   
+
+
+.menu_bienvenido{
+    max-width: 100%;
+        
+    padding: 10px;
+    border:none;
+    margin: 4% 0px 0px 85%;
+}
+
+.menu_transferencias{
+    max-width: 100%;
+        
+    padding: 10px;
+    border:none;
+    margin: 17% 0px 0px 6%;
+}
+.menu_transferencias img{
+    filter:none;
+    width: 12px;
+    height: 12px;
+}
+.menu_transferencias li a{
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+}
+
+.MenuUser{
+    background: #00aeff;
+    width: 20%;
+    float: right;
+    margin-top: 72px;
+}
+
+
+.containermodal{
+    max-width: 600px;
+    background: #fff;
+    position: fixed;
+   
+    left: 80%;
+    margin-top: 72px; 
+    box-shadow: -10px 0px 30px -20px rgba(0,0,0,0.4);
+    border-radius: 10px;
+    visibility: visible;
+    transition: all 300ms;
+    z-index: 10;
+    border: none;
+}
+
+.headermodal{
+    height: 40px;
+    padding: 10px;
+    background: #20a6ff;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+.headermodal label{
+    font-size: 20px;
+    position: relative;
+    right: -20px;
+    top: -16px;
+    background: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.bodymodal{
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+.bodymodal a{
+    text-decoration: none;
+    padding: 5px 25px;
+    color: black;
+}
+.bodymodal a:hover{
+    background: #c7c7c7;
+    padding: 0px -25px;
+    width: 100%;
+}
+.message__modal{
+    margin-top: 20px;
+    width: 100%;
+}
+
+/*Estilos para  tipo de cambio*/
+
+.contenido-cambio{
+    margin: 25% 75% 0px 100px;
+    background: #2F99EF;
+    border-radius:10px 10px 10px 10px;
+    border: none;
+    width:25%;
+}
+.opciones{
+    display: flex;
+    background: white;
+    padding: 10px 10px;
+}
+.Venta{
+    text-align:  right;
+    padding: 5px 10px;
+    margin-left: 10px;
+    color:black;
+    width: 50%; 
+}
+.compra{
+    float: left;
+    width: 50%;
+    margin-right: 10px;
+    color:black;
+    padding: 5px 10px; 
+}
+.Monedas_Cambio{
+    background: #E7F9F9;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.Monedas_Cambio opciones{
+    float: right;
+    background: #20a6ff;
+}
+
+.ofertas-img{
+    filter: none;
+    margin: auto;
+    margin-left: 100px;
+}

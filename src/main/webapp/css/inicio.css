@@ -1,0 +1,469 @@
+/* LOS ESTILOS QUE UTILIZO */
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.header{
+    width: 100%;
+	height: 70px;
+    position: fixed;
+    top: 0;left: 0;
+    background-color: #20a6ff;
+}
+
+/*Estilos para el encabezado*/
+.container{
+	margin-left: 30px;
+}
+.container .btn-menu, .logo{
+	float: left;
+	line-height: 70px;
+}
+.container .btn-menu label{
+	color: #fff;
+	font-size: 25px;
+	cursor: pointer;
+}
+.logo h1{
+	margin-top: 0;
+	color: #fff;
+	font-weight: bold	;
+	font-size: 28px;
+	margin-left: 30px;			/*sdfaaaaaaaaaaaaaa*/
+	
+}
+.container .menu{
+	float: right;
+	line-height: 70px;
+	
+}
+.container .menu a{
+	
+	display: inline-block;
+	padding: 10px;
+	line-height: normal;
+	text-decoration: none;
+	color: #fff;
+	transition: 0.1s;
+	border-bottom: 2px solid transparent;
+	font-size: 15px;
+	margin-right: 5px;
+}
+.container .menu a:hover{
+	background-color: rgba(0, 0, 0, 0.777);
+	border-radius: 3px;	
+}
+/*Fin de Estilos para el encabezado*/
+
+/*Menù lateral*/
+#btn-menu{
+	display: none;
+	margin-top: 20px;
+	
+}
+.container-menu{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;left: 0;
+	transition: all 500ms ease;
+	opacity: 0;
+	visibility: hidden;
+}
+#btn-menu:checked ~ .container-menu{
+	opacity: 1;
+	visibility: visible;
+}
+
+/*RECUADRO SIRVE*/
+.cont-menu{
+	width: 100%;
+	max-width: 250px;
+	background: #1c1c1c;
+	height: 100vh;
+	margin-top: 70px;
+	position: fixed;
+	transition: all 500ms ease;
+	transform: translateX(-100%);
+}
+#btn-menu:checked ~ .container-menu .cont-menu{
+	transform: translateX(0%);
+}
+.cont-menu nav{
+	transform: translateY(15%);
+}
+.cont-menu nav a{
+	display: block;
+	text-decoration: none;
+	padding: 20px;
+	color: #c7c7c7;
+	border-left: 5px solid transparent;
+	transition: all 400ms ease;
+}
+.cont-menu nav a:hover{
+	border-left: 5px solid #c7c7c7;
+	background: #1f1f1f;
+}
+.cont-menu label{
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+}
+/*Fin de Menù lateral*/
+
+
+/*Menu lateral fijo*/
+.body-container{
+	background-color: #ba1d1d;
+	padding: 0px;
+	height: 100%;
+	display: flex;
+	color: #1c1c1c;
+}
+
+.container-left{
+	margin-top:70px ;
+	background-color:#20a6ff;
+	position: fixed;
+	width: 100px;
+	height: 100%;
+	color: white;
+}
+.container-left nav ul{
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	font-size: 12px;
+	max-width: 100%;
+}
+.container-left nav ul li{
+	text-decoration: none;
+	margin-top: 30px;
+	padding-bottom: 10px;
+	width: 100%;	
+	justify-items: center;
+	text-align: center;
+}
+.container-left nav ul li a{
+	text-decoration: none;
+	color: white;
+	text-align: right;
+	max-width: 100%;
+}
+
+img{
+	filter:  brightness(0) invert(1);
+}
+.logoo{
+	filter: none;
+}
+
+
+
+
+
+
+
+
+
+
+.tile-container{
+	text-align: center;
+	padding: 20px 25px;
+}
+.tile{
+	height: 100px;
+	width: 1070px;
+	margin: 5px;
+	display: inline-block;
+	text-decoration: none;
+	color: var(--accent-color);
+	border: 1px solid var(--border-color);
+	border-radius: 2px;
+	user-select: none;
+	transition: all .2s ease-in-out;
+	background-color: #FFF;
+}
+.tile:hover{
+	text-decoration: none;
+	border-color: var(--color-three);
+}
+.tile:focus,
+.tile:active{
+	outline: none;
+}
+.tile:hover .tile-tittle{
+	color: #FFF;
+	border-color: var(--color-three);
+	background-color: var(--color-three);
+}
+.tile-icon{
+    float: left;
+    padding: 0px 5px;
+	width: 200px;
+	height: 20px;
+	box-sizing: border-box;
+	padding-top: 22px;
+}
+.tile-cuenta{
+    float: left;
+    padding: 0px 5px;
+	width: 400px;
+	height: auto;
+	box-sizing: border-box;
+	padding-top: 22px;
+    
+}
+.tile-saldo{
+    float: left;
+    padding: 0px 5px;
+	width: 180px;
+	height: auto;
+	box-sizing: border-box;
+	padding-top: 22px;
+    
+}
+.options{
+    float: left;
+    padding: 0px 5px;
+	width: 40px;
+	height: auto;
+	box-sizing: border-box;
+	padding-top: 22px;
+}
+.tile-icon > i{
+	font-size: 80px;
+}
+.tile-icon > p{
+	font-family: 'roboto_medium_regular';
+	height: 35px;
+	line-height: 35px;
+}
+.tile:hover .tile-icon > i,
+.tile:hover .tile-cuenta,
+.tile:hover .tile-saldo,
+.tile:hover .tile-icon > p{
+	color: var(--color-three);
+}
+:root{
+	--color-one: #F5F5F5;
+	--color-two: #24292E;
+	--color-three: #20a6ff;
+	/*--color-three: #0366D6;*/
+
+	--form-color: #14111A;
+
+	--accent-color: #253556;
+	/*--accent-color: #455A64;*/
+    --border-color: #D8D8D8;
+}
+
+/*----------  Page nav tabs  ----------*/
+.page-nav-tabs{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+}
+.page-nav-tabs li,
+.page-nav-tabs li a{
+	height: 40px;
+	line-height: 40px;
+}
+.page-nav-tabs li{
+	margin: 5px 20px;
+}
+.page-nav-tabs li a{
+	color: var(--accent-color);
+	font-size: 17px;
+	min-width: 200px;
+	width: auto;
+	display: block;
+	text-align: center;
+	user-select: none;
+	transition: all .2s ease-in-out;
+	border-bottom: 2px solid transparent;
+}
+.page-nav-tabs li a.active{
+	color: var(--color-three);
+	cursor: none;
+	pointer-events: none;
+}
+.page-nav-tabs li a:hover{
+	text-decoration: none;
+	color: #333;
+	border-bottom: 2px solid #333;
+}
+.exit{
+    filter: brightness(0);
+    float: left;
+    padding: 4px, 5px;
+}
+.page-header{
+    padding: 0px 5px;
+	width: 1000px;
+	height: 25px;
+	
+}
+
+.contenido-text{
+	margin-top: 90px;
+	margin-left: 120px;
+    margin-right: 10px;
+    border:1px solid black;
+    border-radius:5px;
+    box-shadow: 7px 7px 15px #000000;
+    background: #efefef;
+}
+.container-mov{
+    line-height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.inicio{
+    float: right;
+}
+/*----------  menudesplegable ----------*/
+.dropdown {
+	display: inline-block;
+	position: relative;
+    width: 90px;
+    height: 20px;
+    box-sizing: border-box;
+    padding-top: 22px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  color: #FFFFFF;
+  background-color: #00A4BD;
+}
+
+/*Codigo de bienvenida*/
+.MenuUser{
+    background: #00aeff;
+    width: 20%;
+    float: right;
+    margin-top: 72px;
+}
+
+
+.containermodal{
+    max-width: 600px;
+    background: #fff;
+    position: fixed;
+    /*hacer invisible el recuadro*/
+    /* top: 50%; /
+    / transform: translateY(-50%); */
+    left: 80%;
+    margin-top: 72px; 
+    box-shadow: -10px 0px 30px -20px rgba(0,0,0,0.4);
+    border-radius: 10px;
+    visibility: visible;
+    transition: all 300ms;
+    z-index: 10;
+    border: none;
+}
+
+.headermodal{
+    height: 40px;
+    padding: 10px;
+    background: #20a6ff;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+.headermodal label{
+    font-size: 20px;
+    position: relative;
+    right: -20px;
+    top: -16px;
+    background: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.bodymodal{
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+.bodymodal a{
+    text-decoration: none;
+    padding: 5px 25px;
+    color: black;
+}
+.bodymodal a:hover{
+    background: #c7c7c7;
+    padding: 0px -25px;
+    width: 100%;
+}
+.message__modal{
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+/*Estilos para  tipo de cambio*/
+
+.contenido-cambio{
+    margin: 25% 75% 0px 100px;
+    background: #2F99EF;
+    border-radius:10px 10px 10px 10px;
+    border: none;
+    width:25%;
+}
+.opciones{
+    display: flex;
+    background: white;
+    padding: 10px 10px;
+}
+.Venta{
+    text-align:  right;
+    padding: 5px 10px;
+    margin-left: 10px;
+    color:black;
+    width: 50%; 
+}
+.compra{
+    float: left;
+    width: 50%;
+    margin-right: 10px;
+    color:black;
+    padding: 5px 10px; 
+}
+.Monedas_Cambio{
+    background: #E7F9F9;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.Monedas_Cambio opciones{
+    float: right;
+    background: #20a6ff;
+}
