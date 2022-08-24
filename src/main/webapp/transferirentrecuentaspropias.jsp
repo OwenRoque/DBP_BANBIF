@@ -183,10 +183,10 @@
         <div class="programar">
             <h5> <label class="switch"> <input type="checkbox"> <span class="slider round"></span> </label> Programar</h5>
             <br>
-            <h5>Su transaccion sera ejecutada el &nbsp;<input type="date">
+            <h5>Su transaccion sera ejecutada el &nbsp;<input type="date" id="fecha">
             </h5>
             <h5>Frecuencia: 
-                <select name="frecuencia">
+                <select name="frecuencia" id="frecuencia">
                     <option value="una_vez" selected="">Una sola vez</option>
                     <option value="dos_veces">Dos veces</option>
                     <option value='tres_veces'>Tres veces</option>
