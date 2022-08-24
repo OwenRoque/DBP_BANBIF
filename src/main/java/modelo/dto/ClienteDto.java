@@ -5,7 +5,6 @@ import modelo.Clientes;
 
 /* Dto = Data Transfer Object para Cliente*/
 public class ClienteDto extends Clientes{
-    private String razon; // nombre completo
     private String tipodoc;  // DNI  
     private String nivelestudios;
     private String nacionalidad;
@@ -13,7 +12,7 @@ public class ClienteDto extends Clientes{
     private String nombrevia_residencia;
     private String nombrevia_laboral;
     private String nombreprofesiondatolaboral;
-    private String nombrebanco; 
+    private String nombrebanco;
 
     public String getTipodoc() {
         return tipodoc;

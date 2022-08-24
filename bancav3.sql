@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-08-2022 a las 23:58:30
+-- Tiempo de generación: 23-08-2022 a las 19:16:36
 -- Versión del servidor: 10.6.5-MariaDB-log
 -- Versión de PHP: 7.4.27
 
@@ -20,6 +20,65 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `banca`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PagarTarjetas` (IN `tipooperacionIN` VARCHAR(35), IN `cuentaorigenidIN` INT, IN `cuentadestinoidIN` INT, IN `montoIN` DECIMAL(15,2), IN `nombreoperacionIN` VARCHAR(256), IN `cciexternoIN` VARCHAR(35), IN `fechaprogramadaIN` DATETIME)   BEGIN
+	
+	DECLARE pSaldoCuentaOrigen,pSaldoCuentaDestino DECIMAL(15,2);
+	DECLARE pResultado VARCHAR(250);
+	SET pSaldoCuentaOrigen:=0.00;	
+	SET pSaldoCuentaDestino:=0.00;
+	SET pResultado:='';
+	
+	SELECT saldodisponible INTO pSaldoCuentaOrigen FROM cuentas where id=cuentaorigenidIN;
+	SELECT saldodisponible INTO pSaldoCuentaDestino FROM cuentas where id=cuentadestinoidIN;
+	
+	aBlock:BEGIN
+		IF pSaldoCuentaOrigen<=pSaldoCuentaDestino THEN
+				SET pResultado:='ERROR No Cuenta con Saldo Disponible para realizar esta operación';
+				LEAVE aBlock;
+		END IF;
+		
+		IF IFNULL(montoIN,0)<=0.00 THEN
+				SET pResultado:='ERROR, Monto de la Transacción es Inválida';
+				LEAVE aBlock;
+		END IF;
+		
+		
+		IF tipooperacionIN='PMT' THEN # PMT Mis Tarjetas
+			INSERT INTO movimientos(fechaoperacion,tipooperacionprincipal,cuentaorigenId,cuentadestinoId,
+				monto,nombreoperacion,estadomovimiento,tipomovimiento,
+				cciexterno,fechaprogramado,estado )
+			VALUES (NOW(),tipooperacionIN,cuentaorigenidIN,cuentadestinoidIN, # REG(REGULAR), DIF(DIFERIDO) Y RET(RETENIDO)
+			montoIN, nombreoperacionIN, CASE WHEN @fechaprogramadaIN IS NULL THEN 'REG' ELSE 'RET' END, 'C',
+			IFNULL(cciexternoIN,''), fechaprogramadaIN, 2); # estado [0=Anulado, 1=OK, 2=Programado]
+			
+			UPDATE cuentas SET saldocontable=saldocontable-montoIN
+			 ,saldodisponible=saldodisponible-montoIN
+			 WHERE id=cuentaorigenidIN;
+			
+			SET pResultado:='OK, Proceso realizado con Operación Nro:' + CAST(LAST_INSERT_ID() AS VARCHAR(35));
+				LEAVE aBlock;
+				
+		END IF;
+		#ELSE IF tipooperacionIN='POT' THEN #POT Pagar otras Tarjetas
+		#END IF
+		#ELSE IF tipooperacionIN='PTO' THEN #POT Pagar Tarjetas Otros Bancos
+		#END IF
+		#ELSE IF tipooperacionIN='PTD' THEN #POT Pagar Tarjetas Dinners
+		#END IF
+		#ELSE IF tipooperacionIN='PPR' THEN #POT Pagar Prestamos
+		#END IF
+		#ELSE IF tipooperacionIN='PPR' THEN #POT Pagar Servicios
+		#END IF;
+END aBlock;	
+	Select pResultado as res;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -71,7 +130,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`Id`, `tdoc_idc`, `numerodoc`, `apepat`, `apemat`, `nombres`, `fecnac`, `clave`, `estado`, `email`, `telefonomovil`, `telefonocasa`, `nivelestudios_idc`, `nacionalidad_id`, `ubigeo_codigo`, `via_idc_residencia`, `direccion_residencia`, `numero_residencia`, `interior_residencia`, `urbanizacion_residencia`, `coddepartamento_laboral`, `via_idc_laboral`, `direccion_laboral`, `numero_laboral`, `interior_laboral`, `urbanizacion_laboral`, `profesion_idc_datolaboral`, `nombreempresa_datolaboral`, `rucempresa_datolaboral`, `rubroempresa_datolaboral`, `telefono_datolaboral`, `cargo_datolaboral`, `created_at`, `updated_at`, `escuentaexterna`, `banco_idc`) VALUES
-(0, 60, '99999999', 'CAJA', ' ', ' ', '2000-01-01', '000', 1, 'cajabanbif@banbif.com', '000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 60, '99999999', 'CAJA', ' ', ' ', '2000-01-01', '000', 1, 'cajabanbif@banbif.com', '000000000', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-01 23:40:00', NULL, NULL, NULL),
 (1, 60, '73768171', 'ROQUE', 'SOSA', 'OWEN HAZIEL', '2004-06-20', '123', 1, 'oroque@unsa.edu.pe', '950000000', '0', 27, 604, 'PE040112', 2, 'AREQUIPA', '701', 'A', 'URB. JORGE CHAVEZ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNSA', '20163646499', 'UNIVERSIDAD', NULL, 'ESTUDIANTE', '2022-08-21 00:28:18', NULL, b'0', NULL),
 (2, 60, '85996582', 'HINOJOSA', 'CARDENAS', 'EDUARDO', '1980-06-20', '123', 1, 'ehinojosa@unsa.edu.pe', '958950000', '0', 27, 604, 'PE040112', 4, 'INDEPENDENCIA', '100', NULL, 'URB. LA ALONDRA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNSA', '20163646499', 'UNIVERSIDAD', NULL, 'ESTUDIANTE', '2022-08-20 10:28:18', NULL, b'0', NULL),
 (3, 60, '56223598', 'CCAMA', 'MARRON', 'GUSTAVO ALONSO', '2003-06-27', '123', 1, 'gccamam@unsa.edu.pe', '950001526', '0', 27, 604, 'PE040112', 4, 'LA UNION', '506', NULL, 'URB. LOS REYES', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'UNSA', '20163646499', 'UNIVERSIDAD', NULL, 'ESTUDIANTE', '2022-08-19 10:28:18', NULL, b'0', NULL),
@@ -225,18 +284,18 @@ INSERT INTO `codigos` (`Id`, `tipo`, `nombre`, `valor`) VALUES
 CREATE TABLE `cuentas` (
   `Id` int(10) UNSIGNED NOT NULL,
   `cliente_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'Id del cliente dueño de la cuenta',
-  `cuenta` varchar(15) COLLATE utf8mb4_spanish_ci DEFAULT NULL COMMENT 'numero de cuenta',
+  `cuenta` varchar(15) COLLATE utf8mb4_spanish_ci NOT NULL COMMENT 'numero de cuenta',
   `cci` varchar(22) COLLATE utf8mb4_spanish_ci DEFAULT NULL COMMENT 'numero de cuenta interbancaria',
-  `nombre` varchar(255) COLLATE utf8mb4_spanish_ci DEFAULT NULL COMMENT 'Nombre Personalizado de la cuenta',
-  `tipocuenta_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'Nro de Cuenta',
-  `moneda` char(1) COLLATE utf8mb4_spanish_ci DEFAULT NULL COMMENT 'S=Soles, D=Dolares',
-  `fechaapertura` date DEFAULT NULL COMMENT 'Fecha de Apertura',
+  `nombre` varchar(255) COLLATE utf8mb4_spanish_ci NOT NULL COMMENT 'Nombre Personalizado de la cuenta',
+  `tipocuenta_id` int(10) UNSIGNED NOT NULL COMMENT 'Nro de Cuenta',
+  `moneda` char(1) COLLATE utf8mb4_spanish_ci NOT NULL COMMENT 'S=Soles, D=Dolares',
+  `fechaapertura` date NOT NULL COMMENT 'Fecha de Apertura',
   `teaanual` decimal(12,4) DEFAULT 0.0000 COMMENT 'TEA Anual de la Cuenta',
-  `saldocontable` decimal(15,2) DEFAULT NULL COMMENT 'Saldo Contable',
-  `saldodisponible` decimal(15,2) DEFAULT NULL COMMENT 'Saldo Disponible',
-  `estado` int(11) DEFAULT NULL COMMENT '0=Cuenta Anulada, 1=Vigente, 2=Cuenta Suspendida por Usuario, 3=Cuenta Suspendida por Banco',
+  `saldocontable` decimal(15,2) NOT NULL DEFAULT 0.00 COMMENT 'Saldo Contable',
+  `saldodisponible` decimal(15,2) NOT NULL DEFAULT 0.00 COMMENT 'Saldo Disponible',
+  `estado` int(11) DEFAULT 1 COMMENT '0=Cuenta Anulada, 1=Vigente, 2=Cuenta Suspendida por Usuario, 3=Cuenta Suspendida por Banco',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `banco` varchar(255) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `cuentaprincipal_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'Solo para tarjetas, cual es su cuenta, referencia tabla cuentas'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -246,7 +305,7 @@ CREATE TABLE `cuentas` (
 --
 
 INSERT INTO `cuentas` (`Id`, `cliente_id`, `cuenta`, `cci`, `nombre`, `tipocuenta_id`, `moneda`, `fechaapertura`, `teaanual`, `saldocontable`, `saldodisponible`, `estado`, `created_at`, `updated_at`, `banco`, `cuentaprincipal_id`) VALUES
-(0, 0, '004666548471', '0387304126546841233879', 'CAJA CUENTA', 1, 'S', '2022-06-30', '0.0000', NULL, NULL, 1, '2022-06-30 20:14:54', NULL, 'BANBIF', NULL),
+(0, 0, '004666548471', '0387304126546841233879', 'CAJA CUENTA', 1, 'S', '2022-06-30', '0.0000', '1000000.00', '1000000.00', 1, '2022-06-30 20:14:54', NULL, 'BANBIF', NULL),
 (1, 1, '009024222302', '0387301000902422230258', 'Nombre Personalizado', 1, 'S', '2022-08-20', '0.0000', '0.00', '0.00', 1, '2022-08-21 00:33:46', NULL, 'BANBIF', NULL),
 (2, 1, '009024222303', '0387301090242223020580', 'Nombre Personalizado Nro2', 3, 'S', '2022-07-21', '0.0000', '0.00', '0.00', 1, '2022-07-22 05:33:46', NULL, 'BANBIF', NULL),
 (3, 2, '009024254886', '0387301090242548860226', 'Cuenta principal Eduardo', 1, 'S', '2022-06-15', '0.0000', '0.00', '0.00', 1, '2022-06-16 07:33:41', NULL, 'BANBIF', NULL),
