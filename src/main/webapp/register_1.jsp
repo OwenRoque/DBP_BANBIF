@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="login_separator">
                                         <span class="login_separator_text">Paso 1 de 4: </span>
-                                        <span class="login_separator_text_2">Complete la información del usuario</span>
+                                        <span class="login_separator_text_2">Complete la informacion del usuario</span>
                                     </div>
                                     <div class="login_content_form_base">
                                         <div class="login_content_form">
@@ -62,8 +62,8 @@
                                                     <span class="login_boxdrop_text">Tipo de tarjeta</span>
                                                     <div class="login_boxdrop_space">
                                                         <select class="login_boxdrop_select">
-                                                            <option>Débito</option>
-                                                            <option>Crédito</option>
+                                                            <option>Debito</option>
+                                                            <option>Credito</option>
                                                         </select>
                                                     </div>
                                                 </div>
