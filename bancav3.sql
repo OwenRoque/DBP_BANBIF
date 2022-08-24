@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 23-08-2022 a las 19:16:36
--- Versión del servidor: 10.6.5-MariaDB-log
--- Versión de PHP: 7.4.27
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-08-2022 a las 00:48:32
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,6 +59,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `PagarTarjetas` (IN `tipooperacionIN
 			UPDATE cuentas SET saldocontable=saldocontable-montoIN
 			 ,saldodisponible=saldodisponible-montoIN
 			 WHERE id=cuentaorigenidIN;
+			 
+			 UPDATE cuentas SET saldocontable=saldocontable-montoIN
+			 ,saldodisponible=saldodisponible-montoIN
+			 WHERE id=cuentadestinoidIN;
 			
 			SET pResultado:='OK, Proceso realizado con Operación Nro:' + CAST(LAST_INSERT_ID() AS VARCHAR(35));
 				LEAVE aBlock;
@@ -306,7 +310,7 @@ CREATE TABLE `cuentas` (
 
 INSERT INTO `cuentas` (`Id`, `cliente_id`, `cuenta`, `cci`, `nombre`, `tipocuenta_id`, `moneda`, `fechaapertura`, `teaanual`, `saldocontable`, `saldodisponible`, `estado`, `created_at`, `updated_at`, `banco`, `cuentaprincipal_id`) VALUES
 (0, 0, '004666548471', '0387304126546841233879', 'CAJA CUENTA', 1, 'S', '2022-06-30', '0.0000', '1000000.00', '1000000.00', 1, '2022-06-30 20:14:54', NULL, 'BANBIF', NULL),
-(1, 1, '009024222302', '0387301000902422230258', 'Nombre Personalizado', 1, 'S', '2022-08-20', '0.0000', '0.00', '0.00', 1, '2022-08-21 00:33:46', NULL, 'BANBIF', NULL),
+(1, 1, '009024222302', '0387301000902422230258', 'Nombre Personalizado', 1, 'S', '2022-08-20', '0.0000', '14000.00', '14000.00', 1, '2022-08-21 00:33:46', '2022-08-24 22:19:14', 'BANBIF', NULL),
 (2, 1, '009024222303', '0387301090242223020580', 'Nombre Personalizado Nro2', 3, 'S', '2022-07-21', '0.0000', '0.00', '0.00', 1, '2022-07-22 05:33:46', NULL, 'BANBIF', NULL),
 (3, 2, '009024254886', '0387301090242548860226', 'Cuenta principal Eduardo', 1, 'S', '2022-06-15', '0.0000', '0.00', '0.00', 1, '2022-06-16 07:33:41', NULL, 'BANBIF', NULL),
 (4, 3, '009015666846', '0387301090156668465598', 'LordGusty', 1, 'S', '2022-07-01', '0.0000', '0.00', '0.00', 1, '2022-07-01 18:15:41', NULL, 'BANBIF', NULL),
@@ -2268,7 +2272,8 @@ INSERT INTO `movimientos` (`Id`, `fechaoperacion`, `tipooperacionprincipal`, `cu
 (3, '2022-08-01 00:00:00', 'T', 6, 4, '2000.00', 'Transferencia  Get', 'REG', 'A', NULL, NULL, NULL),
 (4, '2022-08-02 00:00:00', 'T', 5, 3, '1000.00', 'Transferencia 2 Send', 'REG', 'C', NULL, NULL, NULL),
 (8, '2022-08-02 00:00:00', 'T', 3, 5, '1000.00', 'Transferencia 2 Get', 'REG', 'A', NULL, NULL, NULL),
-(13, '2022-08-20 00:00:00', 'P', 0, 9, '1000.00', 'COMPRA SAGA', 'REG', 'C', NULL, NULL, NULL);
+(13, '2022-08-20 00:00:00', 'P', 0, 9, '1000.00', 'COMPRA SAGA', 'REG', 'C', NULL, NULL, NULL),
+(14, '2022-08-24 17:14:54', 'PMT', 1, 9, '1000.00', 'PAGO TARJETA', 'REG', 'C', '', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -2749,7 +2754,7 @@ ALTER TABLE `cuentasdestinofrecuentes`
 -- AUTO_INCREMENT de la tabla `movimientos`
 --
 ALTER TABLE `movimientos`
-  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `nacionalidad`
