@@ -259,7 +259,7 @@ i {
     padding: 0;
     margin-top: 5px;
 }
-.login_section
+.login_table li
 {
     font-size: 14px;
     display: flex;
@@ -268,6 +268,7 @@ i {
     color: #666;
     gap: 10px;
     padding: 5px 0 0;
+    margin-left:55px;
 }
 .login_i
 {
