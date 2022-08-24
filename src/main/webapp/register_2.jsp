@@ -114,7 +114,7 @@
                                             </div>  
                                             <div class="login_button">
                                                 <button id="btn" class="login_button_next" type="button">
-                                                    <span class="login_button_next_text">Siguiente</span>
+                                                    <span class="login_button_next_text">Crear cuenta</span>
                                                 </button>
                                             </div>    
                                         </div>
