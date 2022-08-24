@@ -17,154 +17,115 @@ public class Movimientos {
 //    private static final long serialVersionUID = 1L;
     private int id;
     private Date fechaoperacion;
-    private String tipooperacionprincipal; /* Utilizar TipoOperacionEnum*/
+    private TipoOperacionEnum tipooperacionprincipal; /* Utilizar TipoOperacionEnum*/
+    private int cuentaorigenId;
+    private int cuentadestinoId;
     private BigDecimal monto;
     private String nombreoperacion;
-    private String estadomovimiento;
-    private Character tipomovimiento;
-    private String cciexterno;
-    private Cuentas cuentadestinoId;
-    private Cuentas cuentaorigenId;
+    private EstadoMovimientoEnum estadomovimiento;
+    private Character tipomovimiento; /*Solo puede ser A=Abono o C=Cargo*/
+    private String cciexterno; /* Max long 35*/
+    private Date fechaprogramado; /*Solo si es una operacion Programada*/
+    private int estado; /* 0=Anulado, 1=OK,2=Programado */
 
-    /**
-     * @return the id
-     */
+    public String getMontoString() {
+        return String.valueOf(monto.doubleValue());
+    }
+    
     public int getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(int id) {
         this.id = id;
     }
 
-    /**
-     * @return the fechaoperacion
-     */
     public Date getFechaoperacion() {
         return fechaoperacion;
     }
 
-    /**
-     * @param fechaoperacion the fechaoperacion to set
-     */
     public void setFechaoperacion(Date fechaoperacion) {
         this.fechaoperacion = fechaoperacion;
     }
 
-    /**
-     * @return the tipooperacionprincipal
-     */
-    public String getTipooperacionprincipal() {
+    public TipoOperacionEnum getTipooperacionprincipal() {
         return tipooperacionprincipal;
     }
 
-    /**
-     * @param tipooperacionprincipal the tipooperacionprincipal to set
-     */
-    public void setTipooperacionprincipal(String tipooperacionprincipal) {
+    public void setTipooperacionprincipal(TipoOperacionEnum tipooperacionprincipal) {
         this.tipooperacionprincipal = tipooperacionprincipal;
     }
 
-    /**
-     * @return the monto
-     */
+    public int getCuentaorigenId() {
+        return cuentaorigenId;
+    }
+
+    public void setCuentaorigenId(int cuentaorigenId) {
+        this.cuentaorigenId = cuentaorigenId;
+    }
+
+    public int getCuentadestinoId() {
+        return cuentadestinoId;
+    }
+
+    public void setCuentadestinoId(int cuentadestinoId) {
+        this.cuentadestinoId = cuentadestinoId;
+    }
+
     public BigDecimal getMonto() {
         return monto;
     }
 
-    /**
-     * @param monto the monto to set
-     */
     public void setMonto(BigDecimal monto) {
         this.monto = monto;
     }
 
-    /**
-     * @return the nombreoperacion
-     */
     public String getNombreoperacion() {
         return nombreoperacion;
     }
 
-    /**
-     * @param nombreoperacion the nombreoperacion to set
-     */
     public void setNombreoperacion(String nombreoperacion) {
         this.nombreoperacion = nombreoperacion;
     }
 
-    /**
-     * @return the estadomovimiento
-     */
-    public String getEstadomovimiento() {
+    public EstadoMovimientoEnum getEstadomovimiento() {
         return estadomovimiento;
     }
 
-    /**
-     * @param estadomovimiento the estadomovimiento to set
-     */
-    public void setEstadomovimiento(String estadomovimiento) {
+    public void setEstadomovimiento(EstadoMovimientoEnum estadomovimiento) {
         this.estadomovimiento = estadomovimiento;
     }
 
-    /**
-     * @return the tipomovimiento
-     */
     public Character getTipomovimiento() {
         return tipomovimiento;
     }
 
-    /**
-     * @param tipomovimiento the tipomovimiento to set
-     */
     public void setTipomovimiento(Character tipomovimiento) {
         this.tipomovimiento = tipomovimiento;
     }
 
-    /**
-     * @return the cciexterno
-     */
     public String getCciexterno() {
         return cciexterno;
     }
 
-    /**
-     * @param cciexterno the cciexterno to set
-     */
     public void setCciexterno(String cciexterno) {
         this.cciexterno = cciexterno;
     }
 
-    /**
-     * @return the cuentadestinoId
-     */
-    public Cuentas getCuentadestinoId() {
-        return cuentadestinoId;
+    public Date getFechaprogramado() {
+        return fechaprogramado;
     }
 
-    /**
-     * @param cuentadestinoId the cuentadestinoId to set
-     */
-    public void setCuentadestinoId(Cuentas cuentadestinoId) {
-        this.cuentadestinoId = cuentadestinoId;
+    public void setFechaprogramado(Date fechaprogramado) {
+        this.fechaprogramado = fechaprogramado;
+    }
+    
+    public int getEstado() {
+        return estado;
     }
 
-    /**
-     * @return the cuentaorigenId
-     */
-    public Cuentas getCuentaorigenId() {
-        return cuentaorigenId;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
-
-    /**
-     * @param cuentaorigenId the cuentaorigenId to set
-     */
-    public void setCuentaorigenId(Cuentas cuentaorigenId) {
-        this.cuentaorigenId = cuentaorigenId;
-    }
-
     
 }

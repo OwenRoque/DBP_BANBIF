@@ -8,7 +8,7 @@ function acceder(){
     dniVal = dni.value;
     claveVal = clave.value;
     
-    var contenido = document.getElementById("mensaje");
+    //var contenido = document.getElementById("mensaje");
     
     if(window.XMLHttpRequest){
         ajax = new XMLHttpRequest();
@@ -22,7 +22,7 @@ function acceder(){
             if(ajax.responseText.trim().includes("OK")){
                 window.location.href = "inicio.jsp";
             } else {
-                contenido.innerHTML = ajax.responseText;
+                alert(ajax.responseText);
             }
         }
     };

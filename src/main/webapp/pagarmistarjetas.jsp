@@ -1,6 +1,9 @@
+<%@page import="modelo.TipoOperacionEnum"%>
+<%@page import="modelo.Movimientos"%>
 <%@page import="modelo.dto.ClienteConectadoDto"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<jsp:useBean id='mov' class='modelo.Movimientos'>--%>
 <%
     ClienteConectadoDto cc= (ClienteConectadoDto) session.getAttribute("cliente");
     if(session.getAttribute("cliente_id") == null){
@@ -8,7 +11,12 @@
         response.sendRedirect("index.html");
         return;
     }
-%> 
+    Movimientos mov=new Movimientos();
+    if(request.getAttribute("movimiento")!=null){
+        mov=(Movimientos) request.getAttribute("movimiento");
+    }
+    
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,9 +151,14 @@
                     <h3> 1° Tarjeta a pagar  </h3>
                     <hr>
                     <select id="tarjeta" name='tarjeta' required>
-                        <option value='' selected="">Seleccione un producto</option>
+                        <option value='' <%=mov.getId()<0 ? "selected" : "" %>>Seleccione un producto</option>
                         <c:forEach items="${listaTarjetas}" var="lc" varStatus="status">
-                        <option value="${lc.id}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                            <option value="${lc.id}" 
+                                <c:if test="${mov.getCuentadestinoId()==lc.id}">
+                                    <c:out value="selected"/>
+                                </c:if>>
+                                ${lc.nombre} - Saldo: ${lc.value}
+                            </option>
                         </c:forEach>
                     </select>
                 </div>
@@ -157,15 +170,24 @@
                     <h3> 3° Cuenta origen (a debitar)  </h3>
                     <hr>
                     <select name='cuenta' id="cuenta" required>
-                        <option value='' selected="">Seleccione un producto</option>
+                        <option value='' <%=mov.getId()==-1 ? "selected" : "" %>>Seleccione un producto</option>
                         <c:forEach items="${listaCuentas}" var="lc" varStatus="status">
-                        <option value="${lc.id}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                            <option value="${lc.id}"
+                                <c:if test="${mov.getCuentaorigenId()==lc.id}">
+                                    <c:out value="selected"/>
+                                </c:if>
+                            >
+                            ${lc.nombre} - Saldo: ${lc.value}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
             <div class="monto">
-                <input name="monto" value="0" type='number' id="monto" placeholder="Ingrese monto" required>
+                <input name="monto" type='number' 
+                       id="monto" value="${mov.getMontoString()}" 
+                       class="login_user"
+                       required 
+                       placeholder="Ingrese monto"/>
             </div>
             <hr class="hr1">
             <hr>
@@ -174,7 +196,10 @@
                 <div class='datos_adicionales'>
                     <div class="descripcion">
                         <h4>Descripcion</h4>
-                        <input name="descripcion" placeholder='Descripcion' id="descripcion">
+                        <input name="descripcion" placeholder='Descripcion' id="descripcion" 
+                               autocomplete="off" 
+                               value="${mov.getNombreoperacion()}"
+                        />
                     </div>
                     <div class="enviar_a_correo">
                         <h4>Enviar confirmacion a:</h4>

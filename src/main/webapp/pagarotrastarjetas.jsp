@@ -171,11 +171,11 @@
                 <div class='datos_adicionales'>
                     <div class="descripcion">
                         <h4>Descripcion</h4>
-                        <input placeholder='Descripcion' id="descripcion">
+                        <input placeholder='Descripcion' id="descripcion" autocomplete="off">
                     </div>
                     <div class="enviar_a_correo">
                         <h4>Enviar confirmacion a:</h4>
-                        <h4 class="correo">****************@gmail.com</h4>
+                        <h4 class="correo"><%=cc.getEmailPrivate()%></h4>
                     </div>
                 </div>
             </div>
