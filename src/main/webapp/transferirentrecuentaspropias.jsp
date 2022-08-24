@@ -1,4 +1,5 @@
 <%@page import="modelo.dto.ClienteConectadoDto"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     ClienteConectadoDto cc= (ClienteConectadoDto) session.getAttribute("cliente");
@@ -15,6 +16,7 @@
     <title>BanBif Banking</title>
     <link rel="stylesheet" href="css/transferir_styles.css"/>
     <link rel="stylesheet" href="css/modal_styles.css"/>
+    <script src="js/transferirentrecuentaspropiasAjax.js"></script>
     <script>
     function abrir_tipodecambio(){
         const url = "TipoDeCambio"; // servlet
@@ -138,27 +140,27 @@
         <div class='formulario_tarjetas'>
             <div class="obligatorio">
                 <div class='partes'>
-                    <h3> Cuenta de Origen  </h3>
-                    <select name='producto' >
-                        <option value='' selected="">Ingrese datos del producto</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
+                    <h3> 1 Cuenta de Origen  </h3>
+                    <select name='origen' id="origen" required>
+                        <option value='' selected="">Seleccione un producto</option>
+                        <c:forEach items="${listaCuentas}" var="lc" varStatus="status">
+                        <option value="${lc.nombre}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class='partes'>
                     <h3> 2 Cuenta Destino  </h3>
-                    <select name='producto' >
+                    <select name='destino' id='destino'>
                         <option value='' selected="">Seleccione un producto</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
+                        <c:forEach items="${listaCuentas}" var="lc" varStatus="status">
+                        <option value="${lc.nombre}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class='partes'>
                     <h3> 3 Monto a transferir </h3>
                     <hr>
-                    <input type="number" placeholder="Ingrese un monto">
+                    <input type="number" name="monto" id="monto" placeholder="Ingrese un monto">
                 </div>
             </div>
             <hr class="hr1">
@@ -221,7 +223,7 @@
                 <div class="login_button_base">
                     <div class="login_button">
                         <button id="btnProcesarPagoMisTarjetas" class="login_button_main" type="submit">
-                            <span class="login_button_main_text">PROCESAR</span>
+                            <span class="login_button_main_text" id='btnConfirmar'>PROCESAR</span>
                         </button>
                     </div>
                </div>

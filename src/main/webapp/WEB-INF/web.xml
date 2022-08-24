@@ -17,6 +17,10 @@
         <servlet-name>PagarMisTarjetas</servlet-name>
         <servlet-class>controlador.PagarMisTarjetas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TransferirEntreCuentasPropias</servlet-name>
+        <servlet-class>controlador.TransferirEntreCuentasPropias</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -28,10 +32,14 @@
     <servlet-mapping>
         <servlet-name>TipoDeCambio</servlet-name>
         <url-pattern>/TipoDeCambio</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PagarMisTarjetas</servlet-name>
         <url-pattern>/PagarMisTarjetas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransferirEntreCuentasPropias</servlet-name>
+        <url-pattern>/TransferirEntreCuentasPropias</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

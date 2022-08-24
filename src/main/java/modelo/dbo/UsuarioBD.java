@@ -1,5 +1,6 @@
 package modelo.dbo;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -124,5 +125,20 @@ public class UsuarioBD {
         }
 
         return null;
+    }
+    
+    public void TransferirEntreCuentasPropias(String cuentaid_origen , String cuentaid_destino , BigDecimal monto){
+        try{
+            String sql = "UPDATE cuentas SET saldocontable = saldocontable - "+monto+", saldodisponible = saldodisponible - "+monto+" WHERE cuenta= '"+cuentaid_origen+"'";
+            String sql2 = "UPDATE cuentas SET saldocontable = saldocontable + "+monto+", saldodisponible = saldodisponible + "+monto+" WHERE cuenta= '"+cuentaid_destino+"'";
+
+            PreparedStatement preparedStatement = conn.getConexion().prepareStatement(sql);
+            preparedStatement.execute();
+            
+            PreparedStatement preparedStatement2 = conn.getConexion().prepareStatement(sql2);
+            preparedStatement2.execute();
+        }catch (SQLException e){    
+            System.out.println("Error UsuarioBD.TransferirEntreCuentasPropias: " + e.getMessage());
+        }
     }
 }
