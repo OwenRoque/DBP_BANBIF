@@ -2,6 +2,10 @@ function exec(){
     var cuentaid_origen = document.getElementById('origen').value;
     var cuentaid_destino = document.getElementById('destino').value;
     var monto = document.getElementById('monto').value;
+    var descripcion = document.getElementById('descripcion').value;
+    var estadoMovimiento = "REG";
+    var fecha = document.getElementById('fecha').value;
+    
     /*
     var programado = document.getElementById('programado').value;
     var fechavence = document.getElementById('fechavence').value;
