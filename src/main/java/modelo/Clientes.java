@@ -1,8 +1,9 @@
 package modelo;
 
 public class Clientes {
+    private int Id;
     private int tdoc_idc;
-    private int numerodoc;  // DNI  
+    private String numerodoc;  // DNI  
     private String apepat;
     private String apemat;
     private String nombres;
@@ -35,6 +36,18 @@ public class Clientes {
     private boolean escuentaexterna;
     private int banco_idc;
 
+    public String getRazon() {
+        return apepat + " " + apemat + " " + nombres;
+    }
+    
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
     /**
      * @return the tdoc_idc
      */
@@ -52,14 +65,14 @@ public class Clientes {
     /**
      * @return the numerodoc
      */
-    public int getNumerodoc() {
+    public String getNumerodoc() {
         return numerodoc;
     }
 
     /**
      * @param numerodoc the numerodoc to set
      */
-    public void setNumerodoc(int numerodoc) {
+    public void setNumerodoc(String numerodoc) {
         this.numerodoc = numerodoc;
     }
 
