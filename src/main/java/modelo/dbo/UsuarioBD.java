@@ -52,6 +52,7 @@ public class UsuarioBD {
 
         return null;
     }
+    
     public void RegistrarUsuario(String usuario, String clave){
         System.out.println("Error operación no permitida por el momento");
 //        try{
@@ -62,7 +63,8 @@ public class UsuarioBD {
 //            System.out.println("Error UsuarioDB registrarUsuario: " + e.getMessage());
 //        }
     }
-    public ClienteDto getbyId(int cliente_id){
+    
+    public Clientes getbyId(int cliente_id){
         ClienteDto clienteDto = null;
         try{
             String sql = "SELECT cli.Id, cli.tdoc_idc, IFNULL(cotdoc.nombre,'') as tipodoc, cli.numerodoc, cli.apepat, cli.apemat, cli.nombres, \n" +
@@ -111,18 +113,34 @@ public class UsuarioBD {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, cliente_id);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next()) { /* antes era while, ahora es if, porque solo habra un registro */
+            if(rs.next()) { 
                 clienteDto = new ClienteDto();
-                clienteDto.setId(rs.getInt("id"));
-                clienteDto.setTdoc_idc(rs.getInt("tdoc_idc"));
-                clienteDto.setNumerodoc(rs.getString("numerodoc"));
-                // 
-                return clienteDto;
             }
         } catch (SQLException e){
             System.out.println("Error UsuarioBD.validarUsuario(): " + e.getMessage());
         }
 
-        return null;
+        return clienteDto;
+    }
+    
+    public String getClavebyId(int cliente_id){
+        String resultado = null;
+        try{
+            String sql = "SELECT clave FROM clientes WHERE Id=?";
+            Connection con=conn.getConexion();
+            if(con==null){
+                System.out.println("Error en conexión de Base de datos");
+                return null;
+            }
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, cliente_id);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()) { 
+                resultado = rs.getString("clave");
+            }
+        } catch (SQLException e){
+            System.out.println("Error UsuarioBD.validarUsuario(): " + e.getMessage());
+        }
+        return resultado;
     }
 }

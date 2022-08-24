@@ -8,13 +8,10 @@ package modelo;
  *
  * @author Haziel
  */
-public enum TipoOperacionEnum {
-    PagarMisTarjeta("PMT"),
-    PagarOtrasTarjetas("POT"),
-    PagarTarjetasOtrosBancos("PTO"),
-    PagarTarjetasDiners("PTD"),
-    PagarPrestamos("PPR"),
-    PagarServicios("PSE") ;
+public enum EstadoMovimientoEnum {
+    REGULAR("REG"),
+    DIFERIDO("DIF"),
+    RETENIDO("RET");
   
 
     private final String value;
@@ -23,7 +20,7 @@ public enum TipoOperacionEnum {
         return this.value;
     }
   
-    TipoOperacionEnum(String _value)
+    EstadoMovimientoEnum(String _value)
     {
         this.value = _value;
     }

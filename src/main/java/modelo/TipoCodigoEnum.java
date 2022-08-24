@@ -8,13 +8,16 @@ package modelo;
  *
  * @author Haziel
  */
-public enum TipoOperacionEnum {
-    PagarMisTarjeta("PMT"),
-    PagarOtrasTarjetas("POT"),
-    PagarTarjetasOtrosBancos("PTO"),
-    PagarTarjetasDiners("PTD"),
-    PagarPrestamos("PPR"),
-    PagarServicios("PSE") ;
+public enum TipoCodigoEnum {
+    TipoVia("TVIA"),
+    TipoEstudio("TESTUDIO"),
+    TipoProfesion("TPROFESION"),
+    TipoDocumentoIdentidad("TDOC"),
+    TipoBanco("TBANCO"),
+    TipoTransferencia("TTRANS"),
+    TipoFrecuencia("TFREC"),
+    TipoCuenta("TCUENTA"),
+    ;
   
 
     private final String value;
@@ -23,7 +26,7 @@ public enum TipoOperacionEnum {
         return this.value;
     }
   
-    TipoOperacionEnum(String _value)
+    TipoCodigoEnum(String _value)
     {
         this.value = _value;
     }
