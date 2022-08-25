@@ -121,7 +121,7 @@
                                                 <div class="login_boxdrop">
                                                     <span class="login_boxdrop_text, text_small">Repetir nueva clave</span>
                                                     <div class="login_content_main_data">
-                                                        <input class= "login_user_extended" style="margin-left: 15px;" id="clave" name="clave" placeholder="Repetir nueva clave">                                           
+                                                        <input class= "login_user_extended" style="margin-left: 15px;" id="claveAgain" name="claveAgain" placeholder="Repetir nueva clave">                                           
                                                     </div>  
                                                 </div>
                                                 <div style="clear:both;"></div>
@@ -142,11 +142,11 @@
                                             </div>  
                                             <div class="login_button">
                                                 <button id="btnRegistrar" class="login_button_next" type="button">
-                                                    <span class="login_button_next_text">Siguiente</span>
+                                                    <span class="login_button_next_text">Registrar</span>
                                                 </button>
                                             </div>    
                                         </div>
-                                    </div>
+                                    </div>  
                                 </div>
                                 <div style="clear:both;"></div>
                             </div>

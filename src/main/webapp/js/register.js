@@ -31,10 +31,20 @@ function acceder()  {
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     ajax.send("usuario=" + dniVal + "&clave=" + claveVal);
 }
+function clean(){
+    var dni = document.getElementById('DNI');
+    var clave = document.getElementById('clave');
+    var claveAgain = document.getElementById('claveAgain');
+    dni.value = '';
+    clave.value = '';
+    claveAgain = '';
+}
 
 function asignar(){
     
     btnAgregar = document.getElementById('btnAcceder');
+    btnClean = document.getElementById('btnClean');
+    btnClean.addEventListener("click",clean);
     btnAgregar.addEventListener("click",acceder);
 }
 
