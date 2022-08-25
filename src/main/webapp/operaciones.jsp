@@ -13,7 +13,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BanBif Banking</title>
-    <link rel="stylesheet" href="css/pagar_styles.css"/>
+    <link rel="stylesheet" href="css/Operaciones_frecuentes.css"/>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <script>
     function abrir_menupagar(){
@@ -24,6 +24,12 @@
     }  
     function abrir_menutransferencias(){
         document.getElementById('menu_transferencias').showModal();
+    }
+    function abrir_trans(){
+        document.getElementById('menu_cambio').showModal();
+    }
+    function abrir_filtro(){
+        document.getElementById('Fitros').showModal();
     }
     function abrir_tipodecambio(){
         const url = "TipoDeCambio"; // servlet
@@ -141,7 +147,13 @@
 
     <!-- Main Content -->
 
-    
+    <div class="contenido-text">
+        <h1>Operaciones Frecuentes</h1>
+        <div class="content-trans">
+            <a href="javascript:abrir_trans()"><h2>Todos <i class="fas fa-chevron-down"></i></h2></a>
+            <a href="javascript:abrir_filtro()"><h3>Filtro avanzado <i class="fas fa-chevron-down"></i></h3></a>
+        </div>
+    </div>
     <!-- Menu Pagar -->
     <dialog class="menu_pagar" id="menu_pagar">
         <ul>
@@ -167,6 +179,46 @@
             </li>
         </ul>
     </dialog>
+    <!-- -->
+    <dialog class='menu_cambio' id="menu_cambio">
+        <div class="headermodal">
+            <h3>Tipo de transaccion</h3>
+        </div>
+        <div class="bodymodal">
+            <a href="#">Todos</a>
+            <a href="#">Entre mis cuentas</a>
+            <a href="#">A Otras Cuentas Banbif</a>
+            <a href="#">A Otras Bancos</a>
+            <a href="#">Al Exterior</a>
+            <a href="#">Mis Tarjetas BanBif</a>
+            <a href="#">Otras Tarjetas BanBif</a>
+            <a href="#">Tarjetas de otros Bancos</a>
+            <a href="#">Tarjetas Diners</a>
+            <a href="#">Mis Prestamos BanBif</a>
+            <a href="#">Servicios</a>
+            <a href="#">Comprar o vender Dolares</a>
+        </div>
+    </dialog>
+    
+    <!-- Filtros -->
+    <dialog id="Fitros" class="cambio-rango">
+        <h4 style="color: #fff; padding: 7px 10px">Filtro Avanzado</h4>
+        <div class="opciones">
+            <h4>Rango de monto</h4>
+          
+        </div>
+        <div>
+            <div class="Desde_">
+                <h5>Desde</h5>
+                <input type="number">
+            </div>
+            <div class="Hasta_">
+                <h5>Hasta</h5>
+                <input type="number">
+            </div>
+        </div>
+    </dialog>
+    
     
     <!-- Menu Bienvenido -->
     <dialog class='menu_bienvenido' id="menu_bienvenido">
@@ -186,11 +238,11 @@
     <!-- Menu Transferencias -->
     <dialog class="menu_transferencias" id="menu_transferencias">
         <ul>
-            <li><a href="TransferirEntreCuentasPropias"> <img src="icons/bank.png" width="30px" height="30px">
+            <li><a href="transferirentrecuentaspropias.jsp"> <img src="icons/bank.png" width="30px" height="30px">
                 Entre Cuentas Propias</a>
             </li>
-            <li><a href="TransferirAOtrasCuentasBambif"> <img src="icons/creditcard.png" width="30px" height="30px">
-                 A Otras Cuentas Bambif</a>
+            <li><a href="transferiraotrascuentas.jsp"> <img src="icons/creditcard.png" width="30px" height="30px">
+                 A Otras Cuentas Banbif</a>
             </li>
             <li><a href="transferiraotrosbancos.jsp"> <img src="icons/bank.png" width="30px" height="30px">
                  A otros bancos</a>
