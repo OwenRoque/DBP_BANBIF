@@ -54,17 +54,6 @@ public class UsuarioBD {
         return null;
     }
     
-    public void RegistrarUsuario(String usuario, String clave){
-        System.out.println("Error operación no permitida por el momento");
-//        try{
-//            String sql = "INSERT INTO usuario VALUES ('" + usuario + "','" + clave + "')";
-//            PreparedStatement preparedStatement = conn.getConexion().prepareStatement(sql);
-//            preparedStatement.executeQuery();
-//        } catch (SQLException e){
-//            System.out.println("Error UsuarioDB registrarUsuario: " + e.getMessage());
-//        }
-    }
-    
     public Clientes getbyId(int cliente_id){
         ClienteDto clienteDto = null;
         try{

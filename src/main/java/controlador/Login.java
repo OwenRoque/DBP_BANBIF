@@ -39,8 +39,8 @@ public class Login extends HttpServlet {
             sesion.setAttribute("cliente",acceso);
             out.println("OK ACCESO DESDE:" + acceso.getIp());
         } else {
-            sesion.invalidate();
             out.println("ERROR: Usuario y/o clave incorrectos");
+            sesion.invalidate();
         }
     }
 
