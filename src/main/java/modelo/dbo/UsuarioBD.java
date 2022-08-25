@@ -144,8 +144,10 @@ public class UsuarioBD {
         return resultado;
     }
     
-    public void TransferirEntreCuentasPropias(String cuentaid_origen , String cuentaid_destino , BigDecimal monto,String descripcion, String fecha , String estado){
-        
+    public void TransferirEntreCuentasPropias(String cuentaid_origen , String cuentaid_destino , BigDecimal monto,String descripcion){
+        // evitar doble registro
+        if (descripcion==null)
+            return;
         try{
             String sql = "UPDATE cuentas SET saldocontable = saldocontable - "+monto+", "
                     + "saldodisponible = saldodisponible - "+monto+" "
@@ -159,20 +161,26 @@ public class UsuarioBD {
             PreparedStatement preparedStatement2 = conn.getConexion().prepareStatement(sql2);
             preparedStatement2.execute();
             
-            String sqlMov = "INSERT INTO movimientos (fechaoperacion,tipooperacionprincipal,cuentaorigenId,"
+            String sqlMov = "INSERT INTO movimientos(fechaoperacion,tipooperacionprincipal,cuentaorigenId,"
                     + "cuentadestinoId,monto,nombreoperacion, estadomovimiento,tipomovimiento,estado) "
-                    + "VALUES ('"+fecha+"','T','"+cuentaid_origen+"','"+cuentaid_destino+"','"+monto+"',"
-                    + "'"+descripcion+"'+'"+estado+"','C','0' )";
+                    + "VALUES (NOW(),'TEC', ?, ?, ?, ?, 'REG', 'C', 1);";
             
             PreparedStatement preparedStatement3 = conn.getConexion().prepareStatement(sqlMov);
+            preparedStatement3.setString(1, cuentaid_origen);
+            preparedStatement3.setString(2, cuentaid_destino);
+            preparedStatement3.setBigDecimal(3, monto);
+            preparedStatement3.setString(4, descripcion); /*nombre operacion*/
             preparedStatement3.execute();
             
-            String sqlMov2 = "INSERT INTO movimientos (fechaoperacion,tipooperacionprincipal,cuentaorigenId,"
+            String sqlMov2 = "INSERT INTO movimientos(fechaoperacion,tipooperacionprincipal,cuentaorigenId,"
                     + "cuentadestinoId,monto,nombreoperacion, estadomovimiento,tipomovimiento,estado) "
-                    + "VALUES ('"+fecha+"','T','"+cuentaid_destino+"','"+cuentaid_origen+"','"+monto+"','"+descripcion+"'+"
-                    + "'"+estado+"','A','0' )";
+                    + "VALUES (NOW(),'TEC', ?, ?, ?, ?, 'REG', 'A', 1);";
             
             PreparedStatement preparedStatement4 = conn.getConexion().prepareStatement(sqlMov2);
+            preparedStatement4.setString(1, cuentaid_destino);
+            preparedStatement4.setString(2, cuentaid_origen);
+            preparedStatement4.setBigDecimal(3, monto);
+            preparedStatement4.setString(4, descripcion); /*nombre operacion*/
             preparedStatement4.execute();
             
         }catch (SQLException e){    

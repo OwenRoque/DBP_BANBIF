@@ -94,4 +94,8 @@ public class CuentasBD {
         }
         return listaAllCuentasDto;
     }
+    
+//    public TipoCuentaDto getSelectedCuentaUsuario(int cliente_id, int cuenta_id){
+//        
+//    }
 }

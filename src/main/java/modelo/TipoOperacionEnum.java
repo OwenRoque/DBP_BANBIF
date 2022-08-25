@@ -9,6 +9,10 @@ package modelo;
  * @author Haziel
  */
 public enum TipoOperacionEnum {
+    TransferenciaEntrecuentas("TEC"),
+    TransferenciaOtrasCuentas("TOC"),
+    TransferenciaOtrosBancos("TOB"),
+    TransferenciaExterior("TEX"),
     PagarMisTarjeta("PMT"),
     PagarOtrasTarjetas("POT"),
     PagarTarjetasOtrosBancos("PTO"),
