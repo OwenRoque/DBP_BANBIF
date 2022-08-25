@@ -1,4 +1,5 @@
 <%@page import="modelo.dto.ClienteConectadoDto"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     ClienteConectadoDto cc= (ClienteConectadoDto) session.getAttribute("cliente");
@@ -141,9 +142,9 @@
                     <h3> Cuenta de Origen  </h3>
                     <select name='producto' >
                         <option value='' selected="">Seleccione un producto</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
+                        <c:forEach items="${listaCuentas}" var="lc" varStatus="status">
+                        <option value="${lc.id}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class='partes'>
@@ -153,11 +154,11 @@
                         <input type='button' name="cuenta_acreditar" value='Nueva' placeholder='Nueva'>
                     </div>
                     <hr>
+                    
                     <select name='producto' >
-                        <option value='' selected="">Ingrese datos del producto</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
-                        <option value=''>??</option>
+                        <c:forEach items="${listaCuentas}" var="lc" varStatus="status">
+                            <option value="${lc.id}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class='partes'>
