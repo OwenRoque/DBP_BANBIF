@@ -33,6 +33,10 @@
         <servlet-name>TransferirAOtrasCuentasBambif</servlet-name>
         <servlet-class>controlador.TransferirAOtrasCuentasBambif</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConfiguracionesInfo</servlet-name>
+        <servlet-class>controlador.ConfiguracionesInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -64,6 +68,10 @@
     <servlet-mapping>
         <servlet-name>TransferirAOtrasCuentasBambif</servlet-name>
         <url-pattern>/TransferirAOtrasCuentasBambif</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfiguracionesInfo</servlet-name>
+        <url-pattern>/ConfiguracionesInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -179,9 +179,9 @@
             
         </div>
         <div class="bodymodal">
-            <a href="configuraciones.jsp">Cambiar contraseña</a>
-            <a href="configuraciones.jsp">Cambiar datos personales</a>
-            <a href="configuraciones.jsp">Configuración personal</a>
+            <a href="ConfiguracionesInfo">Cambiar contraseña</a>
+            <a href="ConfiguracionesInfo">Cambiar datos personales</a>
+            <a href="ConfiguracionesInfo">Configuración personal</a>
         </div>
     </dialog>
     

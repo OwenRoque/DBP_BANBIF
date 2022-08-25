@@ -13,7 +13,73 @@ public class ClienteDto extends Clientes{
     private String nombrevia_laboral;
     private String nombreprofesiondatolaboral;
     private String nombrebanco;
-
+    
+    
+    /*
+        Modificación: agregar atributos de departamento_residencia, provincia_residencia, distrito_residencia..,
+    */
+    private String departamento_residencia; 
+    private String provincia_residencia;
+    private String distrito_residencia;
+    
+    private String departamento_laboral; 
+    private String provincia_laboral;
+    private String distrito_laboral;
+    
+    
+    public String getDepartamentoResidencia(){
+        return this.departamento_residencia;
+    }
+    
+    public void setDepartamentoResidencia(String departamento){
+        this.departamento_residencia = departamento;
+    }
+    
+    public String getProvinciaResidencia(){
+        return this.provincia_residencia;
+    }
+    
+    public void setProvinciaResidencia(String provincia){
+        this.provincia_residencia = provincia;
+    }
+    
+    public String getDistritoResidencia(){
+        return this.distrito_residencia;
+    }
+    
+    public void setDistritoResidencia(String distrito){
+        this.distrito_residencia = distrito;
+    }
+    
+    
+    public String getDepartamentoLaboral(){
+        return this.departamento_laboral;
+    }
+    
+    public void setDepartamentoLaboral(String departamento){
+        this.departamento_laboral = departamento;
+    }
+    
+    public String getProvinciaLaboral(){
+        return this.provincia_laboral;
+    }
+    
+    public void setProvinciaLaboral(String provincia){
+        this.provincia_laboral = provincia;
+    }
+    
+    public String getDistritoLaboral(){
+        return this.distrito_laboral;
+    }
+    
+    public void setDistritoLaboral(String distrito){
+        this.distrito_laboral = distrito;
+    }
+    
+    
+    /* FIN MODIFICACION ....................................*/
+    
+    
     public String getTipodoc() {
         return tipodoc;
     }
