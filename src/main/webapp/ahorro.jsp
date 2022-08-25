@@ -232,7 +232,7 @@
     <!-- Menu Transferencias -->
     <dialog class="menu_transferencias" id="menu_transferencias">
         <ul>
-            <li><a href="transferirentrecuentaspropias.jsp"> <img src="icons/bank.png" width="30px" height="30px">
+            <li><a href="TransferirEntreCuentasPropias"> <img src="icons/bank.png" width="30px" height="30px">
                 Entre Cuentas Propias</a>
             </li>
             <li><a href="transferiraotrascuentas.jsp"> <img src="icons/creditcard.png" width="30px" height="30px">

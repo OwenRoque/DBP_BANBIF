@@ -6,12 +6,7 @@ function exec(){
     var estadoMovimiento = "REG";
     var fecha = document.getElementById('fecha').value;
     
-    /*
-    var programado = document.getElementById('programado').value;
-    var fechavence = document.getElementById('fechavence').value;
-    var descripcion = document.getElementById('descripcion').value;
-    var tipoperacion = document.getElementById('tipooperacion').value;
-  */
+  
     if(window.XMLHttpRequest){
         ajax = new XMLHttpRequest();
     }
@@ -26,7 +21,9 @@ function exec(){
     }
     ajax.open("POST","TransferirEntreCuentasPropias");
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    ajax.send("origen=" + cuentaid_origen + "&destino=" + cuentaid_destino + "&monto=" + monto);
+    
+    ajax.send("origen=" + cuentaid_origen + "&destino=" + cuentaid_destino + "&monto=" + monto + "&descripcion=" + 
+            descripcion + "&estadoMov=" + estadoMovimiento + "&fecha=" +fecha);
 }
 
 function asignar() {

@@ -35,12 +35,13 @@ public class TransferirEntreCuentasPropias extends HttpServlet {
         
         String cuentaid_origen = (request.getParameter("origen"));
         String cuentaid_destino = (request.getParameter("destino"));
-        BigDecimal monto = new BigDecimal(request.getParameter("monto"));   
+        BigDecimal monto = new BigDecimal(request.getParameter("monto"));
+        String descripcion = request.getParameter("descripcion"); 
+        String fecha = request.getParameter("fecha");
+        String estado = request.getParameter("estadoMov");
+
+        usuarioBD.TransferirEntreCuentasPropias(cuentaid_origen , cuentaid_destino , monto, descripcion , fecha , estado);        
                 
-        usuarioBD.TransferirEntreCuentasPropias(cuentaid_origen , cuentaid_destino , monto);        
-        
-        RequestDispatcher rd = request.getRequestDispatcher("/transferirentrecuentaspropias.jsp");
-        
         doGet(request,response);
     }
     @Override

@@ -144,7 +144,7 @@
                     <select name='origen' id="origen" required>
                         <option value='' selected="">Seleccione un producto</option>
                         <c:forEach items="${listaCuentas}" var="lc" varStatus="status">
-                        <option value="${lc.nombre}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                        <option value="${lc.id}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -153,7 +153,7 @@
                     <select name='destino' id='destino'>
                         <option value='' selected="">Seleccione un producto</option>
                         <c:forEach items="${listaCuentas}" var="lc" varStatus="status">
-                        <option value="${lc.nombre}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
+                        <option value="${lc.id}" selected>${lc.nombre} - Saldo: ${lc.value}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -278,7 +278,7 @@
     <!-- Menu Transferencias -->
     <dialog class="menu_transferencias" id="menu_transferencias">
         <ul>
-            <li><a href="transferirentrecuentaspropias.jsp"> <img src="icons/bank.png" width="30px" height="30px">
+            <li><a href="TransferirEntreCuentasPropias"> <img src="icons/bank.png" width="30px" height="30px">
                 Entre Cuentas Propias</a>
             </li>
             <li><a href="transferiraotrascuentas.jsp"> <img src="icons/creditcard.png" width="30px" height="30px">

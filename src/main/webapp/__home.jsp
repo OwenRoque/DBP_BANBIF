@@ -130,7 +130,7 @@
     <dialog class="menu_transferencias" id="menu_transferencias">
         <ul>
             <li>
-                <img src="icons/bank.png" width="30px" height="30px"><a href="TranferirEntreCuentasPropias">
+                <img src="icons/bank.png" width="30px" height="30px"><a href="TransferirEntreCuentasPropias">
                  Entre Cuentas Propias</a>
             </li>
             <li><a href="TransferirAOtrasCuentas"> <img src="icons/creditcard.png" width="30px" height="30px">

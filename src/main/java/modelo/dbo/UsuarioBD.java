@@ -145,16 +145,37 @@ public class UsuarioBD {
         return resultado;
     }
     
-    public void TransferirEntreCuentasPropias(String cuentaid_origen , String cuentaid_destino , BigDecimal monto){
+    public void TransferirEntreCuentasPropias(String cuentaid_origen , String cuentaid_destino , BigDecimal monto,String descripcion, String fecha , String estado){
+        
         try{
-            String sql = "UPDATE cuentas SET saldocontable = saldocontable - "+monto+", saldodisponible = saldodisponible - "+monto+" WHERE cuenta= '"+cuentaid_origen+"'";
-            String sql2 = "UPDATE cuentas SET saldocontable = saldocontable + "+monto+", saldodisponible = saldodisponible + "+monto+" WHERE cuenta= '"+cuentaid_destino+"'";
-
+            String sql = "UPDATE cuentas SET saldocontable = saldocontable - "+monto+", "
+                    + "saldodisponible = saldodisponible - "+monto+" "
+                    + "WHERE id= '"+cuentaid_origen+"'";
             PreparedStatement preparedStatement = conn.getConexion().prepareStatement(sql);
             preparedStatement.execute();
             
+            String sql2 = "UPDATE cuentas SET saldocontable = saldocontable + "+monto+", "
+                    + "saldodisponible = saldodisponible + "+monto+" "
+                    + "WHERE id= '"+cuentaid_destino+"'";
             PreparedStatement preparedStatement2 = conn.getConexion().prepareStatement(sql2);
             preparedStatement2.execute();
+            
+            String sqlMov = "INSERT INTO movimientos (fechaoperacion,tipooperacionprincipal,cuentaorigenId,"
+                    + "cuentadestinoId,monto,nombreoperacion, estadomovimiento,tipomovimiento,estado) "
+                    + "VALUES ('"+fecha+"','T','"+cuentaid_origen+"','"+cuentaid_destino+"','"+monto+"',"
+                    + "'"+descripcion+"'+'"+estado+"','C','0' )";
+            
+            PreparedStatement preparedStatement3 = conn.getConexion().prepareStatement(sqlMov);
+            preparedStatement3.execute();
+            
+            String sqlMov2 = "INSERT INTO movimientos (fechaoperacion,tipooperacionprincipal,cuentaorigenId,"
+                    + "cuentadestinoId,monto,nombreoperacion, estadomovimiento,tipomovimiento,estado) "
+                    + "VALUES ('"+fecha+"','T','"+cuentaid_destino+"','"+cuentaid_origen+"','"+monto+"','"+descripcion+"'+"
+                    + "'"+estado+"','A','0' )";
+            
+            PreparedStatement preparedStatement4 = conn.getConexion().prepareStatement(sqlMov2);
+            preparedStatement4.execute();
+            
         }catch (SQLException e){    
             System.out.println("Error UsuarioBD.TransferirEntreCuentasPropias: " + e.getMessage());
         }
