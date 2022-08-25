@@ -158,7 +158,7 @@
         </form>
         <div class="full-box tile-container"> 
             <% for(TipoCuentaDto t : alcuentas) { %>
-                <a href="ahorro.jsp" class="tile">
+                <a href="ahorro.jsp"  class="tile">
                     <div class="tile-icon">    
                         <p><% out.println(t.getNombretipocuenta()); %></p>
                         <p><% out.println(t.getNombrealias()); %></p>

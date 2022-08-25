@@ -18,12 +18,12 @@ function exec(){
         if(ajax.readyState === 4 && ajax.status === 200){
             //contenido.innerHTML = ajax.responseText;
         }
-    }
+    };
     ajax.open("POST","TransferirEntreCuentasPropias");
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     
     ajax.send("origen=" + cuentaid_origen + "&destino=" + cuentaid_destino + "&monto=" + monto + "&descripcion=" + 
-            descripcion + "&estadoMov=" + estadoMovimiento + "&fecha=" +fecha);
+            descripcion );
 }
 
 function asignar() {

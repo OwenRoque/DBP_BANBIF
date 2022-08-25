@@ -40,7 +40,7 @@ public class TransferirEntreCuentasPropias extends HttpServlet {
         String fecha = request.getParameter("fecha");
         String estado = request.getParameter("estadoMov");
 
-        usuarioBD.TransferirEntreCuentasPropias(cuentaid_origen , cuentaid_destino , monto, descripcion , fecha , estado);        
+        usuarioBD.TransferirEntreCuentasPropias(cuentaid_origen , cuentaid_destino , monto, descripcion );        
                 
         doGet(request,response);
     }

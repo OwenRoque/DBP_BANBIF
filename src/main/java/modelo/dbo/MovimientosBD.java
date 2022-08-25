@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import modelo.Movimientos;
+//import modelo.TipoOperacionEnum;
+import modelo.dto.MovimientoDto;
 
 public class MovimientosBD {
 
@@ -56,4 +59,43 @@ public class MovimientosBD {
         return resultado;
     }
     
+    public ArrayList<MovimientoDto> getMovimientoByCuenta(int cuenta_id){
+        ArrayList<MovimientoDto> listamovDto = new ArrayList<>();
+        try{
+        String sql = "SELECT mov.Id,DATE_FORMAT(mov.fechaoperacion, '%d.%m.%Y %H:%i:%s') AS fecha\n" +
+        ",case when mov.tipomovimiento='A' THEN mov.monto ELSE 0.00 END as abono\n" +
+        ",case when mov.tipomovimiento='A' THEN 0.00 ELSE mov.monto END as cargo\n" +
+        ",mov.nombreoperacion\n" +
+        ",mov.estadomovimiento\n" +
+        "FROM movimientos as mov\n" +
+        "INNER JOIN cuentas as cori on cori.Id=mov.cuentaorigenId\n" +
+        "INNER JOIN cuentas as cdes on cdes.Id=mov.cuentadestinoId\n" + 
+        "WHERE mov.cuentaorigenId=? \n" +
+        "ORDER BY 1 desc\n" +
+        "LIMIT 50";
+            Connection con=conn.getConexion();
+            if(con==null){
+                System.out.println("Error en conexión de Base de datos");
+                return null;
+            }
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            //preparedStatement.setString(1, tipoOperacionEnum.getValue());
+            preparedStatement.setInt(1, cuenta_id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()) { // if antes
+                MovimientoDto i=new MovimientoDto();
+                i.setId(rs.getInt("Id"));
+                i.setFecha(rs.getString("fecha"));
+                i.setAbono(rs.getDouble("abono"));
+                i.setCargo(rs.getDouble("cargo"));
+                i.setNombreoperacion(rs.getString("nombreoperacion"));
+                i.setEstadoMovimiento(rs.getString("estadomovimiento"));
+                listamovDto.add(i);
+            }
+        } catch (SQLException e){
+            System.out.println("Error Cargando Cuentas: " + e.getMessage());
+        }
+
+        return listamovDto;
+    }
 }

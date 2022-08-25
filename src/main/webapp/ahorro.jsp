@@ -1,3 +1,8 @@
+<%@page import="modelo.dbo.CuentasBD"%>
+<%@page import="modelo.dto.MovimientoDto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelo.dbo.MovimientosBD"%>
+<%@page import="modelo.dbo.BDConexion"%>
 <%@page import="modelo.dto.ClienteConectadoDto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -7,6 +12,11 @@
         response.sendRedirect("index.html");
         return;
     }
+    BDConexion conn = new BDConexion();
+    MovimientosBD cuenta_mov = new MovimientosBD(conn);
+    CuentasBD c = new CuentasBD(conn);
+    TipoCuentaDto cuenta = c.getSelectedCuentaUsuario(cc.getId(), )
+    ArrayList<MovimientoDto> mov =  cuenta_mov.getMovimientoByCuenta();
 %> 
 <!DOCTYPE html>
 <html lang="es">
