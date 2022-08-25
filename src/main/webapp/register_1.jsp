@@ -57,7 +57,7 @@
                                                     Obligatorio
                                                 </span>
                                             </div>
-                                            <form style="margin-top: -10px;" method="get">
+                                            <form action="RegistrarUsuario" method="POST" style="margin-top: -10px;"  enctype="multipart/form-data">
                                                 <!--
                                                 <div class="login_boxdrop">
                                                     <span class="login_boxdrop_text">Tipo de tarjeta</span>
@@ -87,7 +87,7 @@
                                                 <div class="login_boxdrop">
                                                     <span class="login_boxdrop_text">Numero de documento</span>
                                                     <div class="login_content_main_data">
-                                                        <input class= "login_user" id="DNI" name="DNI" placeholder="Numero de documento">                                           
+                                                        <input class= "login_user" id="DNI" name="usuario" placeholder="Numero de documento">                                           
                                                     </div>  
                                                 </div>
                                                 <div style="clear:both;"></div>
@@ -125,28 +125,28 @@
                                                     </div>  
                                                 </div>
                                                 <div style="clear:both;"></div>
+                                                <div class="login_footer">
+                                                    <div style="float:right;">
+                                                        <div class="login_button">
+                                                            <button id="btnClean" class="login_button_cancel" type="button">
+                                                                <span class="login_button_cancel_text">Limpiar</span>
+                                                            </button>
+                                                        </div>  
+                                                        <div class="login_button">
+                                                            <a id="btnCancel" class="login_button_cancel" type="button" href="index.html">
+                                                                <span class="login_button_cancel_text">Cancelar</span>
+                                                            </a>
+                                                        </div>  
+                                                        <div class="login_button">
+                                                            <button id="btnRegistrar" class="login_button_next" type="submit">
+                                                                <span class="login_button_next_text">Registrar</span>
+                                                            </button>
+                                                        </div>    
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="login_footer">
-                                        <div style="float:right;">
-                                            <div class="login_button">
-                                                <button id="btnClean" class="login_button_cancel" type="button">
-                                                    <span class="login_button_cancel_text">Limpiar</span>
-                                                </button>
-                                            </div>  
-                                            <div class="login_button">
-                                                <a id="btnCancel" class="login_button_cancel" type="button" href="index.html">
-                                                    <span class="login_button_cancel_text">Cancelar</span>
-                                                </a>
-                                            </div>  
-                                            <div class="login_button">
-                                                <button id="btnRegistrar" class="login_button_next" type="button">
-                                                    <span class="login_button_next_text">Registrar</span>
-                                                </button>
-                                            </div>    
-                                        </div>
-                                    </div>  
                                 </div>
                                 <div style="clear:both;"></div>
                             </div>

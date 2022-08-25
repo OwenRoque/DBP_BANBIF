@@ -1,6 +1,5 @@
 package controlador;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -37,24 +36,10 @@ public class RegistrarUsuario extends HttpServlet {
             }
             
             BDConexion conn = new BDConexion();
-            UsuarioBD usuarioBD = new UsuarioBD();
-            usuarioBD.setConexion(conn);
+            UsuarioBD usuarioBD = new UsuarioBD(conn);
             usuarioBD.RegistrarUsuario(usuario, clave);
             conn.desconectar();
-            
-            String applicationPath = request.getServletContext().getRealPath("");
-            String uploadFilePath = applicationPath + File.separator + "fotos";
-            
-            for(FileItem item : items){
-                if(!item.isFormField()) {
-                    String fileName = new File(item.getName()).getName();
-                    String ext = fileName.split("\\.")[1];
-                    String filePath = uploadFilePath + File.separator + usuario + "." + ext;
-                    System.out.println(filePath);
-                    File storeFile = new File(filePath);
-                    item.write(storeFile);
-                }
-            }
+
             
             out.println("<script type=\"text/javascript\">");
             out.println("alert('USUARIO REGISTRADO CORRECTAMENTE');");
@@ -65,7 +50,7 @@ public class RegistrarUsuario extends HttpServlet {
             System.out.println("Exception: " + ex.toString());
             out.println("<script type=\"text/javascript\">");
             out.println("alert('ERROR AL REGISTRAR USUARIO');");
-            out.println("location='nuevo_usuario.html';");
+            out.println("location='register.jsp';");
             out.println("</script>");
         }
     }

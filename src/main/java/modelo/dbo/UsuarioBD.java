@@ -12,13 +12,12 @@ import modelo.dto.ClienteDto;
 
 public class UsuarioBD {
 
+    private BDConexion conn;
     /* Crear Constructor */
     public UsuarioBD(BDConexion conn) {
         this.conn = conn;
     }
-    
-    private final BDConexion conn;
-    
+    public void setConexion(BDConexion conn){this.conn = conn;}
     public BDConexion getConexion(){
         return this.conn;
     }
@@ -54,6 +53,17 @@ public class UsuarioBD {
         return null;
     }
     
+    public void RegistrarUsuario(String usuario, String clave){
+        try{    
+            String sql = "INSERT INTO clientes VALUES ('" + 60 + "','" + usuario +"','" + "prueba" + "','" + "prueba" + "','" + "prueba" + "','" + clave + "')";
+            PreparedStatement preparedStatement = conn.getConexion().prepareStatement(sql);
+            preparedStatement.executeQuery();
+        } catch (SQLException e){
+            System.out.println("Error UsuarioDB.registrarUsuario: " + e.getMessage());
+        }
+    }
+
+
     public Clientes getbyId(int cliente_id){
         ClienteDto clienteDto = null;
         try{
