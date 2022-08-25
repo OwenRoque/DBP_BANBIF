@@ -72,8 +72,20 @@
                                                             <input class= "login_user_extended" style="margin-left: 54px;" id="clave" name="clave" placeholder="Nueva contraseña">                                       
                                                         </div>
                                                         <ul class="login_table">
-                                                            <li class="login_section">
-                                                                <span>Contraseña debe tener al menos un caracter en mayúscula</span>
+                                                            <li>
+                                                                <span>Contraseña debe tener al menos un caracter en mayúscula</span>                                                                
+                                                            </li>
+                                                            <li>
+                                                                <span>Contraseña debe tener al menos un caracter en minúscula</span>                                                                
+                                                            </li>
+                                                            <li>
+                                                                <span>El largo de la contraseña debe tener entre 8 y 10 caracteres</span>                                                                
+                                                            </li>
+                                                            <li>
+                                                                <span>Contraseña debe tener al menos un caracter especial (-;_;@;&,etc.)</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>Contraseña debe tener al menos un caracter numérico</span>
                                                             </li>
                                                         </ul>  
                                                     </div>
@@ -102,7 +114,7 @@
                                             </div>  
                                             <div class="login_button">
                                                 <button id="btn" class="login_button_next" type="button">
-                                                    <span class="login_button_next_text">Siguiente</span>
+                                                    <span class="login_button_next_text">Crear cuenta</span>
                                                 </button>
                                             </div>    
                                         </div>
