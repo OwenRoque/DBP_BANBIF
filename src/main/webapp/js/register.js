@@ -1,6 +1,6 @@
 const isEmpty = (str) => str.trim() === '';
 
-function acceder(){
+function acceder()  {
     
     var dni = document.getElementById('usuario');
     var clave = document.getElementById('clave');

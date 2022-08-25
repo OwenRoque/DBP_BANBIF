@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/register.css"/>
-        <script src="js/portal.js"></script>
+        <script src="js/register.js"></script>
     </head>
     <body>
         <header>
@@ -58,6 +58,7 @@
                                                 </span>
                                             </div>
                                             <form style="margin-top: -10px;" method="get">
+                                                <!--
                                                 <div class="login_boxdrop">
                                                     <span class="login_boxdrop_text">Tipo de tarjeta</span>
                                                     <div class="login_boxdrop_space">
@@ -72,9 +73,9 @@
                                                     <div class="login_content_main_data">
                                                         <input class= "login_user" id="clave" name="clave" placeholder="**** **** **** ****">                                           
                                                     </div>  
-                                                </div>
+                                                </div> -->
                                                 <div class="login_boxdrop">
-                                                    <span class="login_boxdrop_text">Tipo de tarjeta</span>
+                                                    <span class="login_boxdrop_text">Tipo de documento</span>
                                                     <div class="login_boxdrop_space">
                                                         <select class="login_boxdrop_select">
                                                             <option>DNI</option>
@@ -86,7 +87,41 @@
                                                 <div class="login_boxdrop">
                                                     <span class="login_boxdrop_text">Numero de documento</span>
                                                     <div class="login_content_main_data">
-                                                        <input class= "login_user" id="clave" name="clave" placeholder="Numero de documento">                                           
+                                                        <input class= "login_user" id="DNI" name="DNI" placeholder="Numero de documento">                                           
+                                                    </div>  
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                                <h4 class="h4_tittle">Crea ahora tu clave para la Banca por internet o APP</h4>
+                                                <div class="login_boxdrop">
+                                                    <div class="login_text_container"><span class="login_boxdrop_text, text_small">Nueva clave</span></div>
+                                                    <div style="display: inline-block;position: relative;">
+                                                        <div class="login_content_main_data">
+                                                            <input class= "login_user_extended" style="margin-left: 54px;" id="clave" name="clave" placeholder="Nueva clave">    
+                                                            <ul class="login_table">
+                                                                <li>
+                                                                    <span>Clave debe tener al menos un caracter en mayuscula</span>                                                                
+                                                                </li>
+                                                                <li>
+                                                                    <span>Clave debe tener al menos un caracter en minuscula</span>                                                                
+                                                                </li>
+                                                                <li>
+                                                                    <span>El largo de la clave debe tener entre 8 y 10 caracteres</span>                                                                
+                                                                </li>
+                                                                <li>
+                                                                    <span>Clave debe tener al menos un caracter especial (-;_;@;&,etc.)</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>Clave debe tener al menos un caracter numerico</span>
+                                                                </li>
+                                                            </ul>                                   
+                                                        </div>
+                                                          
+                                                    </div>
+                                                </div>
+                                                <div class="login_boxdrop">
+                                                    <span class="login_boxdrop_text, text_small">Repetir nueva clave</span>
+                                                    <div class="login_content_main_data">
+                                                        <input class= "login_user_extended" style="margin-left: 15px;" id="clave" name="clave" placeholder="Repetir nueva clave">                                           
                                                     </div>  
                                                 </div>
                                                 <div style="clear:both;"></div>
@@ -96,17 +131,17 @@
                                     <div class="login_footer">
                                         <div style="float:right;">
                                             <div class="login_button">
-                                                <button id="btn" class="login_button_cancel" type="button">
+                                                <button id="btnClean" class="login_button_cancel" type="button">
                                                     <span class="login_button_cancel_text">Limpiar</span>
                                                 </button>
                                             </div>  
                                             <div class="login_button">
-                                                <button id="btn" class="login_button_cancel" type="button">
+                                                <a id="btnCancel" class="login_button_cancel" type="button" href="index.html">
                                                     <span class="login_button_cancel_text">Cancelar</span>
-                                                </button>
+                                                </a>
                                             </div>  
                                             <div class="login_button">
-                                                <button id="btn" class="login_button_next" type="button">
+                                                <button id="btnRegistrar" class="login_button_next" type="button">
                                                     <span class="login_button_next_text">Siguiente</span>
                                                 </button>
                                             </div>    
