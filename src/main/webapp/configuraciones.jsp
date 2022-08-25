@@ -1,7 +1,10 @@
 <%@page import="modelo.dto.ClienteConectadoDto"%>
+<%@page import="modelo.dto.ClienteDto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     ClienteConectadoDto cc= (ClienteConectadoDto) session.getAttribute("cliente");
+    ClienteDto informacion =  (ClienteDto) session.getAttribute("informacion");
+    
     if(session.getAttribute("cliente_id") == null){
         session.invalidate();
         response.sendRedirect("index.html");
@@ -17,6 +20,7 @@
     <link rel="stylesheet" href="css/estilos_configuraciones.css">
     <link rel="stylesheet" href="css/pagar_styles.css"/>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <script src="js/editarConfiguracionAjax.js"> </script>
     <script>
     function abrir_menupagar(){
         document.getElementById('menu_pagar').showModal();
@@ -163,9 +167,9 @@
                 <div class="blocks-container">
                     <div class="block">
                         <h3>Nombre Completo: </h3>
-                        <h4>Gusta</h4>
+                        <h4><%= informacion.getRazon() %></h4>
                         <h3>Correo: </h3>
-                        <h4> ******@g </h4>
+                        <h4> <%= informacion.getEmail() %> </h4>
                     </div>
                     <div class="block">
                         <h2> Personales</h2>
@@ -184,12 +188,12 @@
                             </div>
                             <label>
                                 <div class="etiqueta">Nivel de estudio:</div>
-                                <div class="valor"> ---------- </div>
+                                <div class="valor"> <%= informacion.getNivelestudios() %>  </div>
                             </label>
                             <br>
                             <label>
                                 <div class="etiqueta">Nacionalidad: </div>
-                                <div class="valor"> ---------</div>
+                                <div class="valor"> <%= informacion.getNacionalidad() %></div>
                             </label>
                         </div>	
                     </div>
@@ -198,17 +202,17 @@
                         <div class="residencia-data">
                             <label for="">
                                 <div class="etiqueta">Departamento:</div>
-                                 <div class="valor">----</div>
+                                 <div class="valor"><%= informacion.getDepartamentoResidencia()%></div>
                             </label>
                             <br>
                             <label for="">
                                 <div class="etiqueta">Provincia:</div>
-                                 <div class="valor">----</div>
+                                 <div class="valor"><%= informacion.getProvinciaResidencia()%></div>
                             </label>
                             <br>
                             <label for="">
                                 <div class="etiqueta">Distrito</div>
-                                 <div class="valor">----</div>
+                                 <div class="valor"><%= informacion.getDistritoResidencia()%></div>
                             </label>
                             <br>
                             <label for="">
@@ -219,22 +223,22 @@
                             <div class="residencia">
                                 <label for="">
                                     <div class="etiqueta">Dirección</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getDireccion_residencia()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Numero:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getNumero_residencia()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Interior:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getInterior_residencia()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Urbanización:</div>
-                                 <div class="valor">----</div>
+                                 <div class="valor"><%= informacion.getUrbanizacion_residencia()%></div>
                                 </label>
                                 <br>
                             </div>
@@ -245,43 +249,43 @@
                         <div class="residencia-data">
                             <label for="">
                                 <div class="etiqueta">Departamento:</div>
-                                <div class="valor">----</div>
+                                <div class="valor"><%= informacion.getDepartamentoLaboral()%></div>
                             </label>
                             <br>
                             <label for="">
                                 <div class="etiqueta">Provincia:</div>
-                                 <div class="valor">----</div>
+                                 <div class="valor"><%= informacion.getProvinciaLaboral()%></div>
                             </label>
                             <br>
                             <label for="">
                                 <div class="etiqueta">Distrito</div>
-                                 <div class="valor">----</div>
+                                 <div class="valor"><%= informacion.getDistritoLaboral()%></div>
                             </label>
                             <br>
                             <label for="">
                                 <div class="etiqueta">Via:</div>
-                                 <div class="valor">----</div>
+                                 <div class="valor"><%= informacion.getVia_idc_laboral()%></div>
                             </label>
                             <br>
                             <div class="telefonos">
                                 <label for="">
                                     <div class="etiqueta">Dirección</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getDireccion_laboral()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Numero:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getNumero_laboral()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Interior:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getInterior_laboral()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Urbanización:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getUrbanizacion_laboral()%></div>
                                 </label>
                                 <br>
                             </div>
@@ -298,28 +302,28 @@
                             <div class="telefonos">
                                 <label for="">
                                     <div class="etiqueta">Nombre de la Empresa:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getNombreempresa_datolaboral()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">RUC:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getRucempresa_datolaboral()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Rubro de la Empresa:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getRubroempresa_datolaboral()%></div>
                                 </label>
                                 <br>
                                 <label for="">
                                     <div class="etiqueta">Nombre de Teléfono:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getTelefono_datolaboral()%></div>
                                 </label>
                                 <br>
                             </div>
                             <label for="">
                                 <div class="etiqueta">Cargo:</div>
-                                    <div class="valor">----</div>
+                                    <div class="valor"><%= informacion.getCargo_datolaboral()%></div>
                             </label>
                         </div>
                     </div>
@@ -417,9 +421,9 @@
             <div class="blocks-container">
                 <div class="block">
                     <h3>Nombre Completo: </h3>
-                    <h4>Gusta</h4>
+                    <h4><%= informacion.getRazon()%></h4>
                     <h3>Correo: </h3>
-                    <h4> ******@g </h4>
+                    <h4> <%= informacion.getEmail()%> </h4>
                 </div>
                 <div class="block">
                     <h2> Datos personales</h2>
@@ -439,7 +443,7 @@
                         <label>
                             <div class="etiqueta">Nivel de estudio:</div>
                             <div class="valor">
-                                <select>
+                                <select name="nivel_estudio" id="nivel_estudio">
                                     <option>Elija una opción</option>
                                     <option value="Analfabeto">Analfabeto</option>
                                     <option value="Bachiller">Bachiller</option>
@@ -457,7 +461,7 @@
                         <label> 
                             <div class="etiqueta">Nacionalidad: </div>
                             <div class="valor">
-                                <select>
+                                <select name="nacionalidad" id="nacionalidad">
                                    <option value="Peru">Perú</option>
                                    <option value="Paraguay">Paraguay</option>
                                    <option value="Jamaica">Jamaica</option>
@@ -479,7 +483,7 @@
                         <label for="departamento">
                             <div class="etiqueta">Departamento:</div>
                             <div class="valor">
-                                <select id="departamento">
+                                <select name="departamento_residencia" id="departamento_residencia">
                                     <option value="Arequipa">Arequipa</option>
                                     <option value="Ancash">Ancash</option>
                                     <option value="Cusco">Cusco</option>
@@ -507,7 +511,7 @@
                         <label for="via">
                             <div class="etiqueta">Via:</div>
                             <div class="valor">
-                                <select id="via">
+                                <select name="via_residencia"  id="via_residencia">
                                     <option> Elija una opción</option>
                                     <option value="Alameda">ALAMEDA</option>
                                     <option value="Avenida">AVENIDA</option>
@@ -534,28 +538,28 @@
                             <label for="direccion-residencia">
                                 <div class="etiqueta">Dirección:</div>
                                 <div class="valor">
-                                    <input type="text" id="direccion" class="inputs-data">
+                                    <input name="direccion_residencia" type="text" id="direccion_residencia" class="inputs-data">
                                 </div>
                             </label>
                             <br>
                             <label for="numero">
                                 <div class="etiqueta">Número:</div>
                                 <div class="valor">
-                                    <input type="text" id="numero" class="inputs-data">
+                                    <input name="numero_residencia" id="numero_residencia" type="number" id="numero" class="inputs-data">
                                 </div>
                             </label>
                             <br>
                             <label for="interior">
                                 <div class="etiqueta">Interior:</div>
                                 <div class="valor">
-                                    <input type="text" id="interior" class="inputs-data">
+                                    <input name="interior_residencia" id="interior_residencia" type="text" id="interior" class="inputs-data">
                                 </div>
                             </label>
                             <br>
                             <label for="urbanizacion">
                                 <div class="etiqueta">Urbanización:</div>
                                 <div class="valor">
-                                    <input type="text" id="urbanizacion" class="inputs-data">
+                                    <input name="urbanizacion_residencia" id ="urbanizacion_residencia" type="text" id="urbanizacion" class="inputs-data">
                                 </div>
                             </label>
                             <br>
@@ -568,7 +572,7 @@
                         <label for="departamento">
                             <div class="etiqueta">Departamento: </div>
                             <div class="valor">
-                                <select id="departamento">
+                                <select name="departamento_laboral" id="departamento_laboral">
                                     <option value="Arequipa">Arequipa</option>
                                     <option value="Ancash">Ancash</option>
                                     <option value="Cusco">Cusco</option>
@@ -596,7 +600,7 @@
                         <label for="via">
                             <div class="etiqueta">Via: </div>
                             <div class="valor">
-                                <select id="via">
+                                <select name="via_loboral" id="via_loboral">
                                     <option> Elija una opción</option>
                                     <option value="Alameda">ALAMEDA</option>
                                     <option value="Avenida">AVENIDA</option>
@@ -623,21 +627,21 @@
                             <label for="direccion-residencia">
                                 <div class="etiqueta">Dirección: </div>
                                 <div class="valor">
-                                    <input type="text" id="direccion" class="inputs-data">
+                                    <input name="direccion_laboral" id="direccion_laboral" type="text" id="direccion" class="inputs-data">
                                 </div>
                             </label>
                             <br>
                             <label for="numero">
                                 <div class="etiqueta">Número:</div>
                                 <div class="valor">
-                                    <input type="text" id="numero" class="inputs-data">
+                                    <input name="numero_laboral" id="numero_laboral" type="number" id="numero" class="inputs-data">
                                 </div>
                             </label>
                             <br>
                             <label for="interior">
                                 <div class="etiqueta">Interior:</div>
                                 <div class="valor">
-                                    <input type="text" id="interior" class="inputs-data">
+                                    <input name="interior_laboral" id="interior_laboral" type="text" id="interior" class="inputs-data">
                                 </div>
 
                             </label>
@@ -645,7 +649,7 @@
                             <label for="urbanizacion">
                                 <div class="etiqueta">Urbanización:</div>
                                 <div class="valor">
-                                    <input type="text" id="urbanizacion" class="inputs-data">
+                                    <input name="urbanizacion_laboral" id="urbanizacion_laboral" type="text" id="urbanizacion" class="inputs-data">
                                 </div>
                             </label>
                             <br>
@@ -658,7 +662,7 @@
                         <label for="profesion">
                             <div class="etiqueta">Profesión:</div>
                             <div class="valor">
-                                <select id="profesion">
+                                <select name="profesion" id="profesion">
                                     <option value="ABOGADO">ABOGADO</option>
                                     <option value="ACTOR,ACTRIZ">ACTOR,ACTRIZ</option>
                                     <option value="ADMINISTRADOR">ADMINISTRADOR</option>
@@ -681,7 +685,7 @@
                             <label for="empresa">
                                 <div class="etiqueta">Nombre de la Empresa:</div>
                                 <div class="valor">
-                                    <input type="text" id="empresa" class="inputs-data">
+                                    <input name="nomre_empresa" id="nomre_empresa" type="text" id="empresa" class="inputs-data">
                                 </div>
                             </label>
                             <br>
@@ -696,7 +700,7 @@
                             <label for="telefono-number">
                                 <div class="etiqueta">Número de teléfono:</div>
                                 <div class="valor">
-                                    <input type="number" id="telefono-number" class="inputs-data">
+                                    <input name="telefono_laboral" id="telefono_laboral" type="number" id="telefono-number" class="inputs-data">
                                 </div>
                             </label>
                             <br>
@@ -704,7 +708,7 @@
                         <label for="cargo">
                             <div class="etiqueta">Cargo:</div>
                             <div class="valor">
-                                <select id="cargo">
+                                <select name="cargo_laboral" id="cargo_laboral">
                                     <option value="ABOGADO">ABOGADO</option>
                                     <option value="ACTOR,ACTRIZ">ACTOR,ACTRIZ</option>
                                     <option value="ADMINISTRADOR">ADMINISTRADOR</option>
@@ -728,7 +732,7 @@
             </div>
             <div class="buttons-container">
                 <input type="submit" value="Cancelar" class="btn">
-                <input type="submit" value="Confirmar" class="btn">
+                <input type="submit" value="Confirmar" class="btn" id="btnGuardar">
             </div>
         </form>
     </dialog>
@@ -768,19 +772,19 @@
             
         </div>
         <div class="bodymodal">
-            <a href="ConfiguracionesInfo">Cambiar contraseña</a>
-            <a href="ConfiguracionesInfo">Cambiar datos personales</a>
-            <a href="ConfiguracionesInfo">Configuración personal</a>
+            <a href="configuraciones.jsp">Cambiar contraseña</a>
+            <a href="configuraciones.jsp">Cambiar datos personales</a>
+            <a href="configuraciones.jsp">Configuración personal</a>
         </div>
     </dialog>
     
     <!-- Menu Transferencias -->
     <dialog class="menu_transferencias" id="menu_transferencias">
         <ul>
-            <li><a href="TransferirEntreCuentasPropias"> <img src="icons/bank.png" width="30px" height="30px">
+            <li><a href="transferirentrecuentaspropias.jsp"> <img src="icons/bank.png" width="30px" height="30px">
                 Entre Cuentas Propias</a>
             </li>
-            <li><a href="TransferirAOtrasCuentasBambif"> <img src="icons/creditcard.png" width="30px" height="30px">
+            <li><a href="transferiraotrascuentas.jsp"> <img src="icons/creditcard.png" width="30px" height="30px">
                  A Otras Cuentas Bambif</a>
             </li>
             <li><a href="transferiraotrosbancos.jsp"> <img src="icons/bank.png" width="30px" height="30px">
